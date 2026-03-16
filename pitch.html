@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EmployAb — Verified Graduate Employability for Irish Universities</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --navy:#0F2B4C;--navy-light:#1A3D62;--navy-dark:#091D34;
+    --teal:#0A6E6E;--teal-light:#0E8A8A;--teal-dark:#075454;
+    --white:#FFFFFF;--off-white:#F7F9FC;--light-grey:#F0F4F8;
+    --dark-text:#1A1A2E;--muted:#4B5563;--success:#059669;--warning:#D97706;
+    --slide-pad:80px 100px;
+  }
+  html{font-family:'Segoe UI',system-ui,-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;font-size:18px;color:var(--dark-text);scroll-behavior:auto;overflow:hidden}
+  body{background:var(--navy-dark);overflow:hidden;height:100vh}
+
+  /* Progress bar */
+  #progress{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,var(--teal),var(--teal-light));z-index:1000;transition:width .4s ease}
+
+  /* Slide container */
+  #deck{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1);height:100vh;width:100%}
+  .slide{min-width:100vw;height:100vh;display:flex;flex-direction:column;justify-content:center;padding:var(--slide-pad);position:relative;overflow:hidden}
+
+  /* Slide types */
+  .slide--white{background:var(--white);color:var(--dark-text)}
+  .slide--navy{background:var(--navy);color:var(--white)}
+  .slide--gradient{background:linear-gradient(135deg,var(--navy) 0%,var(--teal-dark) 100%);color:var(--white)}
+  .slide--light{background:var(--off-white);color:var(--dark-text)}
+
+  /* Typography */
+  h1{font-size:3.2rem;font-weight:700;line-height:1.15;margin-bottom:.5em}
+  h2{font-size:2.4rem;font-weight:700;line-height:1.2;margin-bottom:.6em}
+  h3{font-size:1.5rem;font-weight:600;margin-bottom:.4em}
+  p,.desc{font-size:1.25rem;line-height:1.6;color:inherit}
+  .subtitle{font-size:1.4rem;opacity:.85;margin-bottom:1.2em;font-weight:400}
+  .small{font-size:1rem;opacity:.7}
+  .teal{color:var(--teal)}
+  .slide--navy .teal,.slide--gradient .teal{color:var(--teal-light)}
+  .navy{color:var(--navy)}
+  .bold{font-weight:700}
+
+  /* Stat blocks */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;margin:32px 0}
+  .stat{text-align:center}
+  .stat-value{font-size:2.8rem;font-weight:800;line-height:1.1}
+  .stat-label{font-size:1rem;margin-top:6px;opacity:.8}
+
+  /* Feature lists */
+  ul.features{list-style:none;display:grid;gap:16px;margin:20px 0}
+  ul.features li{font-size:1.15rem;line-height:1.5;padding-left:28px;position:relative}
+  ul.features li::before{content:'';position:absolute;left:0;top:8px;width:12px;height:12px;border-radius:50%;background:var(--teal)}
+  .slide--navy ul.features li::before,.slide--gradient ul.features li::before{background:var(--teal-light)}
+
+  /* Two column layout */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+  .cols-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;align-items:start}
+
+  /* Cards */
+  .card{background:var(--white);border-radius:12px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+  .slide--navy .card,.slide--gradient .card{background:rgba(255,255,255,.1);box-shadow:none;border:1px solid rgba(255,255,255,.15)}
+
+  /* Step flow */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin:32px 0}
+  .step{text-align:center;padding:24px 16px;border-radius:12px;background:var(--light-grey);position:relative}
+  .step-num{display:inline-flex;width:40px;height:40px;border-radius:50%;background:var(--teal);color:var(--white);font-weight:700;font-size:1.2rem;align-items:center;justify-content:center;margin-bottom:12px}
+  .step h3{font-size:1.15rem;margin-bottom:6px}
+  .step p{font-size:.95rem;color:var(--muted)}
+  .step-arrow{position:absolute;right:-18px;top:50%;transform:translateY(-50%);font-size:1.5rem;color:var(--teal);font-weight:700}
+
+  /* Architecture diagram */
+  .arch{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:0;align-items:center;margin:32px 0}
+  .arch-col{text-align:center}
+  .arch-box{background:var(--light-grey);border:2px solid var(--navy);border-radius:10px;padding:14px 10px;margin:6px 0;font-size:.95rem;font-weight:500}
+  .arch-center{background:linear-gradient(135deg,var(--navy),var(--teal-dark));color:var(--white);border-radius:14px;padding:24px 16px}
+  .arch-center h3{color:var(--teal-light);margin-bottom:8px}
+  .arch-arrow{font-size:2rem;color:var(--teal);font-weight:700;text-align:center}
+
+  /* Tables */
+  table.pricing{width:100%;border-collapse:collapse;margin:24px 0}
+  table.pricing th{background:var(--navy);color:var(--white);padding:14px 20px;text-align:left;font-size:1.05rem}
+  table.pricing td{padding:14px 20px;border-bottom:1px solid #E5E7EB;font-size:1.05rem}
+  table.pricing tr:nth-child(even){background:var(--light-grey)}
+  table.pricing .highlight{background:rgba(10,110,110,.08);font-weight:600}
+
+  /* Badge */
+  .badge{display:inline-block;padding:4px 14px;border-radius:20px;font-size:.85rem;font-weight:600;margin:2px 4px}
+  .badge--teal{background:rgba(10,110,110,.12);color:var(--teal-dark)}
+  .badge--navy{background:rgba(15,43,76,.1);color:var(--navy)}
+
+  /* Slide counter */
+  #counter{position:fixed;bottom:24px;right:36px;font-size:.9rem;color:rgba(255,255,255,.7);z-index:999;background:rgba(15,43,76,.7);padding:6px 14px;border-radius:20px;backdrop-filter:blur(4px)}
+  .slide--white~#counter,.slide--light~#counter{color:var(--muted)}
+
+  /* CTA block */
+  .cta-block{margin-top:32px;padding:32px;border-radius:14px;background:rgba(10,110,110,.08);border-left:5px solid var(--teal)}
+  .slide--gradient .cta-block{background:rgba(255,255,255,.1);border-left-color:var(--teal-light)}
+
+  /* Compliance grid */
+  .compliance-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}
+  .compliance-item{padding:16px;border-radius:10px;background:var(--light-grey);text-align:center;font-size:1rem;font-weight:600;border:2px solid transparent}
+  .compliance-item.active{border-color:var(--teal);background:rgba(10,110,110,.06)}
+
+  /* Metric bars */
+  .metric-row{display:flex;align-items:center;gap:16px;margin:10px 0}
+  .metric-label{width:200px;font-weight:600;font-size:1rem;text-align:right}
+  .metric-bar{flex:1;height:28px;border-radius:6px;background:var(--light-grey);overflow:hidden;position:relative}
+  .metric-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:12px;font-size:.85rem;font-weight:600;color:var(--white)}
+  .metric-fill--teal{background:var(--teal)}
+  .metric-fill--navy{background:var(--navy)}
+
+  /* Flow diagram */
+  .flow-diagram{display:flex;align-items:stretch;gap:0;margin:32px 0;width:100%}
+  .flow-stage{flex:1;text-align:center;padding:20px 12px;position:relative;border-radius:12px}
+  .flow-stage h4{font-size:1rem;margin-bottom:6px}
+  .flow-stage p{font-size:.8rem;opacity:.75;line-height:1.4}
+  .flow-stage .flow-icon{font-size:2rem;margin-bottom:8px}
+  .flow-connector{display:flex;align-items:center;justify-content:center;width:40px;flex-shrink:0;font-size:1.8rem;font-weight:700}
+  .flow-stage--uni{background:rgba(15,43,76,.08);border:2px solid var(--navy)}
+  .flow-stage--platform{background:linear-gradient(135deg,var(--navy),var(--teal-dark));color:var(--white);border:2px solid var(--teal)}
+  .flow-stage--output{background:rgba(5,150,105,.08);border:2px solid var(--success)}
+  .flow-connector--teal{color:var(--teal)}
+  .flow-connector--green{color:var(--success)}
+
+  /* Ecosystem diagram */
+  .eco-wrap{margin:24px 0;position:relative}
+  .eco-grid{display:grid;grid-template-areas:"top top top" "left core right" "bot bot bot";grid-template-columns:1fr 1.5fr 1fr;grid-template-rows:auto 1fr auto;gap:16px;min-height:360px}
+  .eco-zone{display:flex;flex-direction:column;gap:8px}
+  .eco-zone--top{grid-area:top;display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+  .eco-zone--left{grid-area:left;justify-content:center}
+  .eco-zone--right{grid-area:right;justify-content:center}
+  .eco-zone--bot{grid-area:bot;display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+  .eco-box{padding:14px 12px;border-radius:10px;text-align:center;font-size:.9rem;font-weight:500;min-width:120px}
+  .eco-box--gov{background:rgba(217,119,6,.1);border:1px solid var(--warning);color:var(--dark-text)}
+  .eco-box--uni{background:rgba(15,43,76,.08);border:1px solid var(--navy);color:var(--navy)}
+  .eco-box--emp{background:rgba(5,150,105,.08);border:1px solid var(--success);color:var(--dark-text)}
+  .eco-box--stu{background:rgba(10,110,110,.08);border:1px solid var(--teal);color:var(--teal-dark)}
+  .eco-core{grid-area:core;background:linear-gradient(135deg,var(--navy),var(--teal-dark));color:var(--white);border-radius:20px;padding:28px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative}
+  .eco-core h3{font-size:1.6rem;color:var(--teal-light);margin-bottom:4px}
+  .eco-core p{font-size:.85rem;opacity:.8;margin:2px 0}
+  .eco-arrow-label{position:absolute;font-size:.7rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:1px}
+  .eco-arrow-label--top{top:-20px;left:50%;transform:translateX(-50%)}
+  .eco-arrow-label--left{left:-40px;top:50%;transform:rotate(-90deg) translateX(-50%);transform-origin:left center}
+  .eco-arrow-label--right{right:-40px;top:50%;transform:rotate(90deg) translateX(50%);transform-origin:right center}
+  .eco-arrow-label--bot{bottom:-20px;left:50%;transform:translateX(-50%)}
+
+  /* Apprenticeship */
+  .apprentice-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin:24px 0}
+  .apprentice-stat{text-align:center;padding:20px;border-radius:10px}
+  .slide--navy .apprentice-stat{background:rgba(255,255,255,.08)}
+
+  /* Logo */
+  .logo{font-size:3rem;font-weight:800;letter-spacing:-1px}
+  .logo-lg{font-size:4.5rem}
+
+  /* Responsive */
+  @media(max-width:1024px){
+    :root{--slide-pad:40px 48px}
+    h1{font-size:2.4rem}h2{font-size:1.8rem}
+    .cols{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr 1fr}
+    .stats{grid-template-columns:repeat(2,1fr)}
+  }
+</style>
+</head>
+<body>
+
+<div id="progress" style="width:0%"></div>
+
+<!-- ========== SLIDE 1: TITLE ========== -->
+<div id="deck">
+<section class="slide slide--gradient" style="justify-content:center;align-items:center;text-align:center">
+  <div class="logo logo-lg">Employ<span class="teal">Ab</span></div>
+  <p class="subtitle" style="margin-top:16px;font-size:1.5rem">Verified Graduate Employability, Powered by Your University</p>
+  <p style="font-size:1.1rem;opacity:.65;margin-top:32px">employab.com</p>
+  <p style="font-size:1rem;opacity:.45;margin-top:48px">Confidential &mdash; University Partnership Proposal</p>
+</section>
+
+<!-- ========== SLIDE 2: THE PROBLEM ========== -->
+<section class="slide slide--white">
+  <h2>The Problem</h2>
+  <p class="subtitle" style="color:var(--muted)">Ireland produces world-class graduates &mdash; but the system fails to connect them to employers</p>
+  <div class="stats">
+    <div class="stat"><div class="stat-value" style="color:var(--warning)">10.8%</div><div class="stat-label">Irish youth unemployment<br>(CSO 2025)</div></div>
+    <div class="stat"><div class="stat-value" style="color:var(--navy)">&euro;307M</div><div class="stat-label">HE structural funding gap<br>(Cassells Report, half unaddressed)</div></div>
+    <div class="stat"><div class="stat-value" style="color:var(--teal)">82%</div><div class="stat-label">of employers report<br>critical skills gaps (IBEC)</div></div>
+    <div class="stat"><div class="stat-value" style="color:var(--warning)">&euro;4.5bn</div><div class="stat-label">DFHERIS budget under<br>pressure for outcomes</div></div>
+  </div>
+  <div class="cta-block" style="margin-top:24px">
+    <p><strong>The cost:</strong> &euro;90&ndash;&euro;145 million per year in lost economic output from graduate unemployment alone. Every hour a graduate is unemployed costs the Irish economy &euro;10&ndash;&euro;16.</p>
+  </div>
+</section>
+
+<!-- ========== SLIDE 3: COST OF INACTION ========== -->
+<section class="slide slide--navy">
+  <h2>The Cost of Inaction</h2>
+  <ul class="features" style="max-width:800px">
+    <li><strong>HEA Performance Agreements</strong> now track graduate outcomes &mdash; employability is a funding metric</li>
+    <li><strong>International recruitment</strong> depends on your employment story &mdash; 40,000+ students choose Ireland partly for career prospects</li>
+    <li><strong>Demographic cliff</strong> approaching &mdash; 17% decline in the 0&ndash;4 cohort means fewer domestic students from the 2030s</li>
+    <li><strong>AI displacement</strong> is shrinking traditional graduate roles &mdash; the premium on verified, demonstrable skills is rising</li>
+    <li><strong>Employers are bypassing</strong> institutions entirely &mdash; only 6% prioritise academic excellence; 55% prioritise willingness to learn</li>
+    <li><strong>Peer institutions</strong> that adopt outcome platforms first will dominate league tables, student choice, and employer partnerships</li>
+  </ul>
+  <p class="small" style="margin-top:32px">Sources: HEA, CSO, IBEC, Robert Walters Ireland, Eurostat</p>
+</section>
+
+<!-- ========== SLIDE 4: WHAT IS EMPLOYAB ========== -->
+<section class="slide slide--white">
+  <h2>What is <span class="logo" style="font-size:2.4rem">Employ<span class="teal">Ab</span></span>?</h2>
+  <p class="subtitle" style="color:var(--muted)">A white-label employability platform that turns graduate outcomes into your competitive advantage</p>
+  <div class="cols" style="margin-top:24px">
+    <div>
+      <h3 style="color:var(--teal)">Three Capabilities</h3>
+      <ul class="features">
+        <li><strong>OB3 Credential Issuance</strong> &mdash; Issue cryptographically verified digital badges aligned to ESCO and NFQ</li>
+        <li><strong>AI Skills Matching</strong> &mdash; Connect graduates to employer roles using verified skills, not CVs</li>
+        <li><strong>Employability Analytics</strong> &mdash; Real-time dashboards for departments, employers, and government reporting</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="color:var(--navy)">Your Platform, Your Brand</h3>
+      <ul class="features">
+        <li>White-labelled with your university branding and domain</li>
+        <li>Your data stays yours &mdash; GDPR-compliant, Irish DPC aligned</li>
+        <li>Integrates with your existing systems (Banner, SITS, Salesforce)</li>
+        <li>No student data leaves your instance</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SLIDE 5: HOW IT WORKS ========== -->
+<section class="slide slide--light">
+  <h2>How It Works</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Onboard</h3>
+      <p>University configures departments, programmes, and badge templates aligned to NFQ/ESCO</p>
+      <span class="step-arrow">&rarr;</span>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Issue Badges</h3>
+      <p>Graduates receive OB3 verified credentials as they complete modules and programmes</p>
+      <span class="step-arrow">&rarr;</span>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Match Skills</h3>
+      <p>AI matches verified graduate skills to employer role requirements in real time</p>
+      <span class="step-arrow">&rarr;</span>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h3>Track Outcomes</h3>
+      <p>University dashboard shows employment rates, salary data, and skills gaps by department</p>
+    </div>
+  </div>
+  <div class="cta-block">
+    <p><strong>90-day deployment.</strong> From contract to live platform in one academic term. Dedicated onboarding team throughout.</p>
+  </div>
+</section>
+
+<!-- ========== SLIDE 5b: GRADUATE JOURNEY FLOW ========== -->
+<section class="slide slide--white">
+  <h2>The Journey to Employment</h2>
+  <p class="subtitle" style="color:var(--muted)">How a verified credential becomes a verified hire</p>
+  <div class="flow-diagram">
+    <div class="flow-stage flow-stage--uni">
+      <div class="flow-icon">&#127891;</div>
+      <h4>Student Learns</h4>
+      <p>Completes modules, placements, extracurriculars via LMS</p>
+    </div>
+    <div class="flow-connector flow-connector--teal">&rarr;</div>
+    <div class="flow-stage flow-stage--uni">
+      <div class="flow-icon">&#127941;</div>
+      <h4>Badge Issued</h4>
+      <p>University issues OB3 verified credential mapped to ESCO skills</p>
+    </div>
+    <div class="flow-connector flow-connector--teal">&rarr;</div>
+    <div class="flow-stage flow-stage--platform">
+      <div class="flow-icon">&#129302;</div>
+      <h4>AI Matches</h4>
+      <p>EmployAb matches verified skills to live employer requirements</p>
+    </div>
+    <div class="flow-connector flow-connector--green">&rarr;</div>
+    <div class="flow-stage flow-stage--output">
+      <div class="flow-icon">&#128188;</div>
+      <h4>Employer Hires</h4>
+      <p>Employer verifies credentials, interviews matched candidate</p>
+    </div>
+    <div class="flow-connector flow-connector--green">&rarr;</div>
+    <div class="flow-stage flow-stage--output">
+      <div class="flow-icon">&#128200;</div>
+      <h4>Outcome Tracked</h4>
+      <p>Employment data flows back to university and HEA dashboards</p>
+    </div>
+  </div>
+  <div class="cta-block">
+    <p><strong>Closed loop.</strong> Unlike job boards where graduates disappear after application, EmployAb tracks the full journey from badge issuance to employment outcome &mdash; giving your university the data it needs for HEA performance agreements.</p>
+  </div>
+</section>
+
+<!-- ========== SLIDE 6: FOR YOUR UNIVERSITY ========== -->
+<section class="slide slide--white">
+  <h2>For Your University</h2>
+  <p class="subtitle" style="color:var(--muted)">The command centre for graduate employability</p>
+  <div class="cols">
+    <div>
+      <ul class="features">
+        <li><strong>Issue OB3 badges</strong> per module, programme, or extracurricular achievement</li>
+        <li><strong>Track outcomes by department</strong> &mdash; employment rates, time-to-hire, salary bands, skills gaps</li>
+        <li><strong>Manage employer partnerships</strong> &mdash; see which employers hire your graduates, build targeted pipelines</li>
+        <li><strong>HEA/QQI-ready reporting</strong> &mdash; export data aligned to performance agreement metrics</li>
+      </ul>
+    </div>
+    <div>
+      <ul class="features">
+        <li><strong>ESCO-aligned</strong> for EU portability &mdash; your graduates' credentials work across 27 EU member states</li>
+        <li><strong>Curriculum intelligence</strong> &mdash; identify which programmes produce the best outcomes and where gaps exist</li>
+        <li><strong>International student value</strong> &mdash; demonstrate employment pathways that strengthen recruitment</li>
+        <li><strong>NFQ Level mapping</strong> &mdash; badges reference National Framework of Qualifications levels 6&ndash;10</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SLIDE 7: FOR YOUR EMPLOYERS ========== -->
+<section class="slide slide--gradient">
+  <h2>For Your Employers</h2>
+  <p class="subtitle">Give employers a reason to partner with your university</p>
+  <div class="stats" style="margin-bottom:32px">
+    <div class="stat"><div class="stat-value">&euro;3,500</div><div class="stat-label">Current cost per hire<br>(industry average)</div></div>
+    <div class="stat"><div class="stat-value" style="color:var(--teal-light)">&euro;580</div><div class="stat-label">Cost per hire<br>with EmployAb</div></div>
+    <div class="stat"><div class="stat-value">45 days</div><div class="stat-label">Current average<br>time to hire</div></div>
+    <div class="stat"><div class="stat-value" style="color:var(--teal-light)">14 days</div><div class="stat-label">Time to hire<br>with EmployAb</div></div>
+  </div>
+  <ul class="features">
+    <li>Searchable, verified talent pool &mdash; filter by skill, badge, programme, and university</li>
+    <li>Cryptographic verification eliminates CV fraud &mdash; every credential is machine-verifiable</li>
+    <li>Book campus events, post roles, and manage employer branding &mdash; all in one platform</li>
+    <li>Employer satisfaction dashboard shows how your graduates perform post-hire</li>
+  </ul>
+</section>
+
+<!-- ========== SLIDE 8: FOR YOUR STUDENTS ========== -->
+<section class="slide slide--white">
+  <h2>For Your Students</h2>
+  <p class="subtitle" style="color:var(--muted)">The career passport they carry for life</p>
+  <div class="cols">
+    <div>
+      <div class="stats" style="grid-template-columns:1fr 1fr">
+        <div class="stat"><div class="stat-value" style="color:var(--teal)">22 days</div><div class="stat-label">Faster to first job<br>(34 vs 56 days)</div></div>
+        <div class="stat"><div class="stat-value" style="color:var(--success)">&euro;4,500</div><div class="stat-label">Annual salary uplift<br>(verified skills premium)</div></div>
+      </div>
+    </div>
+    <div>
+      <ul class="features">
+        <li><strong>Verified portfolio</strong> of badges, credentials, and skills &mdash; not a PDF CV</li>
+        <li><strong>AI-matched</strong> to roles that fit their verified competencies</li>
+        <li><strong>Portable across the EU</strong> &mdash; ESCO-aligned credentials recognised by Europass and 27 member states</li>
+        <li><strong>Lifelong</strong> &mdash; credentials persist after graduation, building value over time</li>
+        <li><strong>W3C Verifiable Credentials</strong> &mdash; any employer, anywhere, can verify instantly</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SLIDE 9: FOR GOVERNMENT ========== -->
+<section class="slide slide--navy">
+  <h2>For Government &amp; Policy</h2>
+  <p class="subtitle">Real-time data for HEA, DFHERIS, and Enterprise Ireland &mdash; not annual surveys</p>
+  <div class="stats" style="margin-bottom:24px">
+    <div class="stat"><div class="stat-value" style="color:var(--teal-light)">&euro;38M</div><div class="stat-label">Estimated annual<br>exchequer uplift</div></div>
+    <div class="stat"><div class="stat-value" style="color:var(--teal-light)">65:1</div><div class="stat-label">Government ROI<br>(modelled)</div></div>
+    <div class="stat"><div class="stat-value">GDPR</div><div class="stat-label">Irish DPC compliant<br>by design</div></div>
+    <div class="stat"><div class="stat-value">EU AI Act</div><div class="stat-label">Compliant architecture<br>(high-risk classification)</div></div>
+  </div>
+  <ul class="features">
+    <li>Live employability data by institution, discipline, and region &mdash; replaces 18-month-lagging surveys</li>
+    <li>Skills gap analysis mapped to Enterprise Ireland priority sectors and IDA employer needs</li>
+    <li>Supports Funding the Future objectives and HEA performance compact reporting</li>
+    <li>Bologna Process and ESCO alignment for cross-border EU mobility tracking</li>
+  </ul>
+</section>
+
+<!-- ========== SLIDE 10: THE IRISH MARKET ========== -->
+<section class="slide slide--light">
+  <h2>The Irish Opportunity</h2>
+  <p class="subtitle" style="color:var(--muted)">A market primed for an employability platform</p>
+  <div class="cols">
+    <div>
+      <div class="stats" style="grid-template-columns:1fr 1fr">
+        <div class="stat"><div class="stat-value" style="color:var(--navy)">34</div><div class="stat-label">HEA-funded<br>institutions</div></div>
+        <div class="stat"><div class="stat-value" style="color:var(--navy)">89,000</div><div class="stat-label">Graduates<br>per year</div></div>
+        <div class="stat"><div class="stat-value" style="color:var(--teal)">&euro;4.5bn</div><div class="stat-label">DFHERIS annual<br>budget</div></div>
+        <div class="stat"><div class="stat-value" style="color:var(--teal)">40,000+</div><div class="stat-label">International<br>students</div></div>
+      </div>
+    </div>
+    <div>
+      <h3 style="color:var(--navy)">Why Now?</h3>
+      <ul class="features">
+        <li><strong>Funding the Future</strong> is creating demand for measurable outcome platforms</li>
+        <li><strong>ESCO alignment</strong> positions Ireland for EU skills mobility leadership</li>
+        <li><strong>HEA performance compacts</strong> now require employability evidence</li>
+        <li><strong>No incumbent platform</strong> offers OB3 + AI matching + analytics in Ireland</li>
+        <li><strong>Enterprise Ireland</strong> actively funding graduate-to-employer pipelines</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SLIDE 11: STANDARDS & COMPLIANCE ========== -->
+<section class="slide slide--white">
+  <h2>Standards &amp; Compliance</h2>
+  <p class="subtitle" style="color:var(--muted)">Built on open standards, designed for regulatory compliance</p>
+  <div class="compliance-grid">
+    <div class="compliance-item active">Open Badges 3.0<br><span class="small">1EdTech</span></div>
+    <div class="compliance-item active">W3C Verifiable<br>Credentials<br><span class="small">JSON-LD</span></div>
+    <div class="compliance-item active">ESCO<br>Taxonomy<br><span class="small">EU Skills Framework</span></div>
+    <div class="compliance-item active">GDPR<br><span class="small">Irish DPC</span></div>
+    <div class="compliance-item active">EU AI Act<br><span class="small">High-risk compliant</span></div>
+    <div class="compliance-item active">QQI / NFQ<br><span class="small">Levels 6&ndash;10</span></div>
+    <div class="compliance-item">Bologna<br>Process<br><span class="small">EHEA</span></div>
+    <div class="compliance-item">Europass<br><span class="small">EU Portability</span></div>
+  </div>
+  <p style="margin-top:20px;color:var(--muted);font-size:1rem"><strong>Teal border</strong> = currently implemented &nbsp;&bull;&nbsp; Grey = supported / roadmap aligned</p>
+  <div class="cta-block" style="margin-top:20px">
+    <p><strong>No vendor lock-in.</strong> OB3 credentials are portable. If you leave EmployAb, your graduates keep their badges forever &mdash; that is the point of open standards.</p>
+  </div>
+</section>
+
+<!-- ========== SLIDE 12: ECOSYSTEM DIAGRAM ========== -->
+<section class="slide slide--light">
+  <h2>The EmployAb Ecosystem</h2>
+  <p class="subtitle" style="color:var(--muted)">The middleware layer that connects every stakeholder in graduate employability</p>
+  <div class="eco-wrap">
+    <div class="eco-grid">
+      <div class="eco-zone eco-zone--top">
+        <div class="eco-box eco-box--gov">HEA<br><span class="small">Performance agreements</span></div>
+        <div class="eco-box eco-box--gov">DFHERIS<br><span class="small">Policy &amp; funding</span></div>
+        <div class="eco-box eco-box--gov">QQI<br><span class="small">Standards &amp; NFQ</span></div>
+        <div class="eco-box eco-box--gov">SOLAS<br><span class="small">Apprenticeships</span></div>
+      </div>
+      <div class="eco-zone eco-zone--left">
+        <div class="eco-box eco-box--uni">Banner / SITS<br><span class="small">Student records</span></div>
+        <div class="eco-box eco-box--uni">Moodle / Canvas<br><span class="small">LMS</span></div>
+        <div class="eco-box eco-box--uni">Digitary<br><span class="small">Transcripts</span></div>
+        <div class="eco-box eco-box--uni">CareerHub<br><span class="small">Careers CRM</span></div>
+      </div>
+      <div class="eco-core">
+        <h3>Employ<span style="color:var(--teal-light)">Ab</span></h3>
+        <p style="font-size:1rem;margin:8px 0">&#127941; OB3 Credential Engine</p>
+        <p style="font-size:1rem">&#129302; AI Skills Matching</p>
+        <p style="font-size:1rem">&#128200; Employability Analytics</p>
+        <p style="font-size:1rem">&#128188; Employer Portal</p>
+        <p style="font-size:.8rem;opacity:.6;margin-top:12px">You keep everything. We connect it.</p>
+      </div>
+      <div class="eco-zone eco-zone--right">
+        <div class="eco-box eco-box--emp">GradIreland<br><span class="small">214K members</span></div>
+        <div class="eco-box eco-box--emp">Handshake<br><span class="small">EU expansion</span></div>
+        <div class="eco-box eco-box--emp">Employer ATS<br><span class="small">Workday, SAP</span></div>
+        <div class="eco-box eco-box--emp">IDA / EI Network<br><span class="small">3,600+ companies</span></div>
+      </div>
+      <div class="eco-zone eco-zone--bot">
+        <div class="eco-box eco-box--stu">Graduate Portfolio<br><span class="small">OB3 + W3C VC</span></div>
+        <div class="eco-box eco-box--stu">Europass Wallet<br><span class="small">EU portability</span></div>
+        <div class="eco-box eco-box--stu">Credly Import<br><span class="small">Corporate badges</span></div>
+        <div class="eco-box eco-box--stu">LinkedIn Export<br><span class="small">Profile push</span></div>
+      </div>
+    </div>
+  </div>
+  <p style="text-align:center;color:var(--muted);font-size:.9rem;margin-top:8px"><strong style="color:var(--warning)">&#9650; Government</strong> &nbsp;&bull;&nbsp; <strong style="color:var(--navy)">&#9664; University systems</strong> &nbsp;&bull;&nbsp; <strong style="color:var(--success)">&#9654; Employer channels</strong> &nbsp;&bull;&nbsp; <strong style="color:var(--teal)">&#9660; Graduate outputs</strong></p>
+</section>
+
+<!-- ========== SLIDE 13: PROVEN METRICS ========== -->
+<section class="slide slide--gradient">
+  <h2>Proven Metrics</h2>
+  <p class="subtitle">Platform-wide outcomes across partner institutions</p>
+  <div class="stats" style="margin:48px 0">
+    <div class="stat">
+      <div class="stat-value" style="font-size:3.5rem">89%</div>
+      <div class="stat-label" style="font-size:1.15rem">Employment rate<br>(vs 74.9% national average)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value" style="font-size:3.5rem">34 days</div>
+      <div class="stat-label" style="font-size:1.15rem">Average time to<br>first employment</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value" style="font-size:3.5rem">6:1</div>
+      <div class="stat-label" style="font-size:1.15rem">University ROI<br>(licence cost vs outcomes)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value" style="font-size:3.5rem">65:1</div>
+      <div class="stat-label" style="font-size:1.15rem">Government ROI<br>(exchequer return)</div>
+    </div>
+  </div>
+  <p style="text-align:center;opacity:.7;font-size:1rem">Metrics modelled from platform data and HEA Graduate Outcomes Survey baselines</p>
+</section>
+
+<!-- ========== SLIDE 14: APPRENTICESHIPS ========== -->
+<section class="slide slide--navy">
+  <h2>Not Just Graduates &mdash; Apprentices Too</h2>
+  <p class="subtitle">The same verified credential pipeline works for Ireland's 28,400+ apprentices</p>
+  <div class="apprentice-grid">
+    <div class="apprentice-stat">
+      <div class="stat-value" style="color:var(--teal-light)">28,400+</div>
+      <div class="stat-label">Active apprentices</div>
+    </div>
+    <div class="apprentice-stat">
+      <div class="stat-value" style="color:var(--teal-light)">78+</div>
+      <div class="stat-label">Programmes</div>
+    </div>
+    <div class="apprentice-stat">
+      <div class="stat-value" style="color:var(--teal-light)">16</div>
+      <div class="stat-label">ETBs nationwide</div>
+    </div>
+    <div class="apprentice-stat">
+      <div class="stat-value" style="color:var(--warning)">10,000</div>
+      <div class="stat-label">Annual target<br>(consistently undershooting)</div>
+    </div>
+  </div>
+  <ul class="features" style="max-width:800px;margin-top:24px">
+    <li><strong>OB3 badges per apprenticeship phase</strong> &mdash; verified progression from Phase 1 through to completion</li>
+    <li><strong>AI matching for placements</strong> &mdash; connect apprentices to employers who need specific trade skills</li>
+    <li><strong>Real-time SOLAS reporting</strong> &mdash; completion rates, time-to-completion, and employment outcomes instantly</li>
+    <li><strong>Bridges FET and HE</strong> &mdash; apprentice degree programmes create a single credential pipeline across both sectors</li>
+  </ul>
+  <p class="small" style="margin-top:24px">Sources: SOLAS Annual Report 2024, National Apprenticeship Office, DFHERIS</p>
+</section>
+
+<!-- ========== SLIDE 15: PARTNERSHIP MODEL ========== -->
+<section class="slide slide--white">
+  <h2>Partnership Model</h2>
+  <p class="subtitle" style="color:var(--muted)">Flexible licensing designed for Irish institutions</p>
+  <table class="pricing">
+    <thead>
+      <tr><th style="width:25%">Tier</th><th style="width:20%">Annual Licence</th><th>Includes</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Pilot</strong><br><span class="small">Single faculty / school</span></td>
+        <td><strong>&euro;15,000 &ndash; &euro;25,000</strong></td>
+        <td>Up to 2,000 graduates, 1 department, core OB3 issuance + matching, dedicated onboarding</td>
+      </tr>
+      <tr class="highlight">
+        <td><strong>Standard</strong><br><span class="small">Institution-wide</span></td>
+        <td><strong>&euro;40,000 &ndash; &euro;60,000</strong></td>
+        <td>Unlimited departments, white-label branding, employer portal, analytics dashboard, HEA reporting</td>
+      </tr>
+      <tr>
+        <td><strong>Enterprise</strong><br><span class="small">Multi-campus / ATU group</span></td>
+        <td><strong>&euro;75,000 &ndash; &euro;100,000</strong></td>
+        <td>Multi-campus deployment, API integrations, dedicated account team, priority feature development</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="cols" style="margin-top:24px;gap:32px">
+    <div>
+      <h3 style="color:var(--teal)">All Tiers Include</h3>
+      <ul class="features">
+        <li>90-day deployment with dedicated team</li>
+        <li>GDPR-compliant hosting (EU data centres)</li>
+        <li>Ongoing support and training</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="color:var(--teal)">Optional Add-ons</h3>
+      <ul class="features">
+        <li>Banner / SITS / Moodle integration</li>
+        <li>Custom analytics and research dashboards</li>
+        <li>Employer partnership management module</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SLIDE 15: NEXT STEPS ========== -->
+<section class="slide slide--gradient" style="justify-content:center;align-items:center;text-align:center">
+  <h2 style="font-size:2.6rem">Let's Build Your Employability Advantage</h2>
+  <p class="subtitle" style="max-width:700px;margin:16px auto 40px">We are inviting a small number of Irish institutions to join our pilot programme with priority onboarding and preferential terms.</p>
+  <div class="stats" style="max-width:800px;margin:0 auto 48px;grid-template-columns:repeat(3,1fr)">
+    <div class="stat">
+      <div class="stat-value" style="font-size:2.2rem">1</div>
+      <div class="stat-label">Discovery workshop<br>(2 hours, on campus or virtual)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value" style="font-size:2.2rem">2</div>
+      <div class="stat-label">Pilot scoping<br>(faculty selection, data mapping)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value" style="font-size:2.2rem">3</div>
+      <div class="stat-label">Live in 90 days<br>(dedicated deployment team)</div>
+    </div>
+  </div>
+  <div style="margin-top:16px">
+    <div class="logo" style="font-size:2.8rem;margin-bottom:8px">Employ<span class="teal">Ab</span></div>
+    <p style="font-size:1.3rem;margin-bottom:8px">hello@employab.com</p>
+    <p style="font-size:1.1rem;opacity:.7">employab.com</p>
+  </div>
+</section>
+</div>
+
+<div id="counter">1 / 18</div>
+
+<script>
+(function(){
+  const deck = document.getElementById('deck');
+  const slides = deck.querySelectorAll('.slide');
+  const counter = document.getElementById('counter');
+  const progress = document.getElementById('progress');
+  const total = slides.length;
+  let current = 0;
+
+  function goTo(n){
+    if(n<0) n=0;
+    if(n>=total) n=total-1;
+    current=n;
+    deck.style.transform='translateX(-'+current*100+'vw)';
+    counter.textContent=(current+1)+' / '+total;
+    progress.style.width=((current+1)/total*100)+'%';
+
+    // Adapt counter color based on slide type
+    const slide = slides[current];
+    if(slide.classList.contains('slide--white')||slide.classList.contains('slide--light')){
+      counter.style.background='rgba(15,43,76,.75)';
+      counter.style.color='#fff';
+    } else {
+      counter.style.background='rgba(255,255,255,.15)';
+      counter.style.color='rgba(255,255,255,.8)';
+    }
+  }
+
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' '){e.preventDefault();goTo(current+1)}
+    if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();goTo(current-1)}
+    if(e.key==='Home'){e.preventDefault();goTo(0)}
+    if(e.key==='End'){e.preventDefault();goTo(total-1)}
+  });
+
+  // Click navigation: left 30% goes back, right 70% goes forward
+  document.addEventListener('click',function(e){
+    if(e.target.tagName==='A'||e.target.tagName==='BUTTON') return;
+    if(e.clientX < window.innerWidth*0.3) goTo(current-1);
+    else goTo(current+1);
+  });
+
+  // Touch support
+  let touchStartX=0;
+  document.addEventListener('touchstart',function(e){touchStartX=e.touches[0].clientX},{passive:true});
+  document.addEventListener('touchend',function(e){
+    const diff=touchStartX-e.changedTouches[0].clientX;
+    if(Math.abs(diff)>50){diff>0?goTo(current+1):goTo(current-1)}
+  },{passive:true});
+
+  goTo(0);
+})();
+</script>
+</body>
+</html>
