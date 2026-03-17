@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EmployAb — Business Cards — Jonathan McGuinness</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0F2B4C;
+      --teal: #0A6E6E;
+      --teal-light: #5eead4;
+      --teal-pale: #e6f7f7;
+      --white: #ffffff;
+      --gray-100: #f7f8fa;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+
+      --card-w: 3.5in;
+      --card-h: 2in;
+      --bleed: 0in;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--gray-100);
+      color: var(--navy);
+      min-height: 100vh;
+    }
+
+    /* ───────── SCREEN LAYOUT ───────── */
+    .screen-ui {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .page-header .logo-mark {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .page-header .logo-mark span { color: var(--teal); }
+
+    .page-header h1 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 32px;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .page-header p {
+      color: var(--gray-500);
+      font-size: 15px;
+    }
+
+    /* Preview section */
+    .preview-section {
+      margin-bottom: 48px;
+    }
+
+    .preview-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 20px;
+    }
+
+    .preview-row {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .preview-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .preview-col .side-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gray-500);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .card-preview {
+      width: var(--card-w);
+      height: var(--card-h);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow:
+        0 1px 3px rgba(0,0,0,0.08),
+        0 8px 30px rgba(15,43,76,0.12),
+        0 20px 60px rgba(15,43,76,0.06);
+      transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease;
+    }
+
+    .card-preview:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow:
+        0 2px 6px rgba(0,0,0,0.08),
+        0 12px 40px rgba(15,43,76,0.16),
+        0 28px 70px rgba(15,43,76,0.08);
+    }
+
+    /* ───── FRONT FACE ───── */
+    .card-front {
+      width: var(--card-w);
+      height: var(--card-h);
+      background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle geometric texture on front */
+    .card-front::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 80%, rgba(94,234,212,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 85% 20%, rgba(255,255,255,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Fine diagonal lines for texture */
+    .card-front::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        135deg,
+        transparent,
+        transparent 18px,
+        rgba(255,255,255,0.015) 18px,
+        rgba(255,255,255,0.015) 19px
+      );
+      pointer-events: none;
+    }
+
+    .card-front .front-logo {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-front .front-logo span {
+      color: var(--teal-light);
+    }
+
+    .card-front .front-tagline {
+      font-size: 9.5px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-top: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Thin accent line beneath logo */
+    .card-front .front-accent {
+      width: 32px;
+      height: 1.5px;
+      background: var(--teal-light);
+      opacity: 0.5;
+      margin-top: 14px;
+      border-radius: 1px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ───── BACK FACE ───── */
+    .card-back {
+      width: var(--card-w);
+      height: var(--card-h);
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      padding: 0 0.32in;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Thin teal accent stripe along left edge */
+    .card-back::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 15%;
+      bottom: 15%;
+      width: 3px;
+      background: linear-gradient(180deg, var(--teal), var(--teal-light));
+      border-radius: 0 2px 2px 0;
+    }
+
+    .back-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding-left: 0.14in;
+    }
+
+    .back-info { flex: 1; }
+
+    .back-name {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 2px;
+    }
+
+    .back-title {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 14px;
+    }
+
+    .back-details {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .back-details li {
+      font-size: 8.5px;
+      color: var(--gray-500);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: 0.2px;
+    }
+
+    .back-details li svg {
+      width: 10px;
+      height: 10px;
+      flex-shrink: 0;
+      color: var(--teal);
+      opacity: 0.7;
+    }
+
+    .back-logo-area {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+    }
+
+    .back-logo-mark {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.3px;
+      opacity: 0.85;
+    }
+
+    .back-logo-mark span { color: var(--teal); }
+
+    .back-url {
+      font-size: 7.5px;
+      color: var(--gray-300);
+      letter-spacing: 0.5px;
+    }
+
+    /* ───── ACTIONS ───── */
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .btn {
+      padding: 14px 32px;
+      border: none;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: var(--teal);
+      color: var(--white);
+      box-shadow: 0 2px 8px rgba(10,110,110,0.25);
+    }
+    .btn-primary:hover {
+      background: #075454;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(10,110,110,0.3);
+    }
+
+    .btn-outline {
+      background: var(--white);
+      color: var(--navy);
+      border: 1.5px solid var(--gray-300);
+    }
+    .btn-outline:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+
+    .print-note {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--gray-500);
+    }
+
+    /* ───────── PRINT LAYOUT ───────── */
+    .print-sheet {
+      display: none;
+    }
+
+    @media print {
+      @page {
+        size: letter;
+        margin: 0.5in 0.5in;
+      }
+
+      body { background: white; }
+
+      .screen-ui { display: none !important; }
+
+      .print-sheet {
+        display: block;
+        page-break-after: always;
+      }
+
+      .print-sheet:last-child {
+        page-break-after: auto;
+      }
+
+      .print-grid {
+        display: grid;
+        grid-template-columns: repeat(2, var(--card-w));
+        grid-template-rows: repeat(5, var(--card-h));
+        gap: 0;
+        justify-content: center;
+      }
+
+      .print-grid .card-front,
+      .print-grid .card-back {
+        border: 0.5px solid #e5e7eb;
+      }
+
+      /* Remove decorative shadows in print */
+      .card-preview {
+        box-shadow: none;
+        border-radius: 0;
+      }
+    }
+
+    /* ───────── RESPONSIVE ───────── */
+    @media (max-width: 600px) {
+      .preview-row { gap: 24px; }
+      .page-header h1 { font-size: 24px; }
+      .actions { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════ SCREEN UI ════════ -->
+  <div class="screen-ui">
+
+    <div class="page-header">
+      <div class="logo-mark">Employ<span>Ab</span></div>
+      <h1>Business Cards</h1>
+      <p>Jonathan McGuinness &mdash; Founder &amp; CEO</p>
+    </div>
+
+    <!-- Preview -->
+    <div class="preview-section">
+      <div class="preview-label">Card Preview</div>
+      <div class="preview-row">
+
+        <div class="preview-col">
+          <span class="side-label">Front</span>
+          <div class="card-preview">
+            <div class="card-front">
+              <div class="front-logo">Employ<span>Ab</span></div>
+              <div class="front-accent"></div>
+              <div class="front-tagline">Verified Graduate Employability</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-col">
+          <span class="side-label">Back</span>
+          <div class="card-preview">
+            <div class="card-back">
+              <div class="back-content">
+                <div class="back-info">
+                  <div class="back-name">Jonathan McGuinness</div>
+                  <div class="back-title">Founder &amp; CEO</div>
+                  <ul class="back-details">
+                    <li>
+                      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3.5" width="12" height="9" rx="1.5"/><path d="M2 5.5l6 4 6-4"/></svg>
+                      jonathan@employab.com
+                    </li>
+                    <li>
+                      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10.5v1.5a1.5 1.5 0 01-1.5 1.5A10.5 10.5 0 012.5 4.5 1.5 1.5 0 014 3h1.5l1 2.5-1.5 1a8 8 0 004.5 4.5l1-1.5z"/></svg>
+                      +353 87 411 6666
+                    </li>
+                    <li>
+                      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M2 8h12"/><ellipse cx="8" cy="8" rx="3" ry="6"/></svg>
+                      employab.com
+                    </li>
+                    <li>
+                      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2C5.5 2 3.5 4 3.5 6.5C3.5 10.5 8 14 8 14s4.5-3.5 4.5-7.5C12.5 4 10.5 2 8 2z"/><circle cx="8" cy="6.5" r="1.5"/></svg>
+                      Dublin, Ireland
+                    </li>
+                  </ul>
+                </div>
+                <div class="back-logo-area">
+                  <div class="back-logo-mark">Employ<span>Ab</span></div>
+                  <div class="back-url">employab.com</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="actions">
+      <button class="btn btn-primary" onclick="window.print()">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="9" width="9" height="5" rx="0.5"/><path d="M4 9V3.5a.5.5 0 01.5-.5h7a.5.5 0 01.5.5V9"/><rect x="1.5" y="5.5" width="13" height="6" rx="1"/></svg>
+        Print Cards
+      </button>
+      <button class="btn btn-outline" onclick="toggleGuides()">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="12" height="12" rx="1"/><line x1="2" y1="6" x2="14" y2="6"/><line x1="6" y1="2" x2="6" y2="14"/></svg>
+        Toggle Cut Guides
+      </button>
+    </div>
+    <p class="print-note">Prints 10 fronts + 10 backs on two letter-size pages. Use 300gsm card stock for best results.</p>
+
+  </div>
+
+
+  <!-- ════════ PRINT SHEETS ════════ -->
+
+  <!-- Page 1: FRONTS (10 cards = 2 cols x 5 rows) -->
+  <div class="print-sheet" id="print-fronts">
+    <div class="print-grid">
+      <!-- 10 front cards -->
+      <div class="card-front"><div class="front-logo">Employ<span>Ab</span></div><div class="front-accent"></div><div class="front-tagline">Verified Graduate Employability</div></div>
+      <div class="card-front"><div class="front-logo">Employ<span>Ab</span></div><div class="front-accent"></div><div class="front-tagline">Verified Graduate Employability</div></div>
+      <div class="card-front"><div class="front-logo">Employ<span>Ab</span></div><div class="front-accent"></div><div class="front-tagline">Verified Graduate Employability</div></div>
+      <div class="card-front"><div class="front-logo">Employ<span>Ab</span></div><div class="front-accent"></div><div class="front-tagline">Verified Graduate Employability</div></div>
+      <div class="card-front"><div class="front-logo">Employ<span>Ab</span></div><div class="front-accent"></div><div class="front-tagline">Verified Graduate Employability</div></div>
+      <div class="card-front"><div class="front-logo">Employ<span>Ab</span></div><div class="front-accent"></div><div class="front-tagline">Verified Graduate Employability</div></div>
+      <div class="card-front"><div class="front-logo">Employ<span>Ab</span></div><div class="front-accent"></div><div class="front-tagline">Verified Graduate Employability</div></div>
+      <div class="card-front"><div class="front-logo">Employ<span>Ab</span></div><div class="front-accent"></div><div class="front-tagline">Verified Graduate Employability</div></div>
+      <div class="card-front"><div class="front-logo">Employ<span>Ab</span></div><div class="front-accent"></div><div class="front-tagline">Verified Graduate Employability</div></div>
+      <div class="card-front"><div class="front-logo">Employ<span>Ab</span></div><div class="front-accent"></div><div class="front-tagline">Verified Graduate Employability</div></div>
+    </div>
+  </div>
+
+  <!-- Page 2: BACKS (10 cards, mirrored column order for duplex printing) -->
+  <div class="print-sheet" id="print-backs">
+    <div class="print-grid">
+      <div class="card-back"><div class="back-content"><div class="back-info"><div class="back-name">Jonathan McGuinness</div><div class="back-title">Founder &amp; CEO</div><ul class="back-details"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3.5" width="12" height="9" rx="1.5"/><path d="M2 5.5l6 4 6-4"/></svg>jonathan@employab.com</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10.5v1.5a1.5 1.5 0 01-1.5 1.5A10.5 10.5 0 012.5 4.5 1.5 1.5 0 014 3h1.5l1 2.5-1.5 1a8 8 0 004.5 4.5l1-1.5z"/></svg>+353 87 411 6666</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M2 8h12"/><ellipse cx="8" cy="8" rx="3" ry="6"/></svg>employab.com</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2C5.5 2 3.5 4 3.5 6.5C3.5 10.5 8 14 8 14s4.5-3.5 4.5-7.5C12.5 4 10.5 2 8 2z"/><circle cx="8" cy="6.5" r="1.5"/></svg>Dublin, Ireland</li></ul></div><div class="back-logo-area"><div class="back-logo-mark">Employ<span>Ab</span></div><div class="back-url">employab.com</div></div></div></div>
+      <div class="card-back"><div class="back-content"><div class="back-info"><div class="back-name">Jonathan McGuinness</div><div class="back-title">Founder &amp; CEO</div><ul class="back-details"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3.5" width="12" height="9" rx="1.5"/><path d="M2 5.5l6 4 6-4"/></svg>jonathan@employab.com</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10.5v1.5a1.5 1.5 0 01-1.5 1.5A10.5 10.5 0 012.5 4.5 1.5 1.5 0 014 3h1.5l1 2.5-1.5 1a8 8 0 004.5 4.5l1-1.5z"/></svg>+353 87 411 6666</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M2 8h12"/><ellipse cx="8" cy="8" rx="3" ry="6"/></svg>employab.com</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2C5.5 2 3.5 4 3.5 6.5C3.5 10.5 8 14 8 14s4.5-3.5 4.5-7.5C12.5 4 10.5 2 8 2z"/><circle cx="8" cy="6.5" r="1.5"/></svg>Dublin, Ireland</li></ul></div><div class="back-logo-area"><div class="back-logo-mark">Employ<span>Ab</span></div><div class="back-url">employab.com</div></div></div></div>
+      <div class="card-back"><div class="back-content"><div class="back-info"><div class="back-name">Jonathan McGuinness</div><div class="back-title">Founder &amp; CEO</div><ul class="back-details"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3.5" width="12" height="9" rx="1.5"/><path d="M2 5.5l6 4 6-4"/></svg>jonathan@employab.com</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10.5v1.5a1.5 1.5 0 01-1.5 1.5A10.5 10.5 0 012.5 4.5 1.5 1.5 0 014 3h1.5l1 2.5-1.5 1a8 8 0 004.5 4.5l1-1.5z"/></svg>+353 87 411 6666</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M2 8h12"/><ellipse cx="8" cy="8" rx="3" ry="6"/></svg>employab.com</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2C5.5 2 3.5 4 3.5 6.5C3.5 10.5 8 14 8 14s4.5-3.5 4.5-7.5C12.5 4 10.5 2 8 2z"/><circle cx="8" cy="6.5" r="1.5"/></svg>Dublin, Ireland</li></ul></div><div class="back-logo-area"><div class="back-logo-mark">Employ<span>Ab</span></div><div class="back-url">employab.com</div></div></div></div>
+      <div class="card-back"><div class="back-content"><div class="back-info"><div class="back-name">Jonathan McGuinness</div><div class="back-title">Founder &amp; CEO</div><ul class="back-details"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3.5" width="12" height="9" rx="1.5"/><path d="M2 5.5l6 4 6-4"/></svg>jonathan@employab.com</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10.5v1.5a1.5 1.5 0 01-1.5 1.5A10.5 10.5 0 012.5 4.5 1.5 1.5 0 014 3h1.5l1 2.5-1.5 1a8 8 0 004.5 4.5l1-1.5z"/></svg>+353 87 411 6666</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M2 8h12"/><ellipse cx="8" cy="8" rx="3" ry="6"/></svg>employab.com</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2C5.5 2 3.5 4 3.5 6.5C3.5 10.5 8 14 8 14s4.5-3.5 4.5-7.5C12.5 4 10.5 2 8 2z"/><circle cx="8" cy="6.5" r="1.5"/></svg>Dublin, Ireland</li></ul></div><div class="back-logo-area"><div class="back-logo-mark">Employ<span>Ab</span></div><div class="back-url">employab.com</div></div></div></div>
+      <div class="card-back"><div class="back-content"><div class="back-info"><div class="back-name">Jonathan McGuinness</div><div class="back-title">Founder &amp; CEO</div><ul class="back-details"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3.5" width="12" height="9" rx="1.5"/><path d="M2 5.5l6 4 6-4"/></svg>jonathan@employab.com</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10.5v1.5a1.5 1.5 0 01-1.5 1.5A10.5 10.5 0 012.5 4.5 1.5 1.5 0 014 3h1.5l1 2.5-1.5 1a8 8 0 004.5 4.5l1-1.5z"/></svg>+353 87 411 6666</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M2 8h12"/><ellipse cx="8" cy="8" rx="3" ry="6"/></svg>employab.com</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2C5.5 2 3.5 4 3.5 6.5C3.5 10.5 8 14 8 14s4.5-3.5 4.5-7.5C12.5 4 10.5 2 8 2z"/><circle cx="8" cy="6.5" r="1.5"/></svg>Dublin, Ireland</li></ul></div><div class="back-logo-area"><div class="back-logo-mark">Employ<span>Ab</span></div><div class="back-url">employab.com</div></div></div></div>
+      <div class="card-back"><div class="back-content"><div class="back-info"><div class="back-name">Jonathan McGuinness</div><div class="back-title">Founder &amp; CEO</div><ul class="back-details"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3.5" width="12" height="9" rx="1.5"/><path d="M2 5.5l6 4 6-4"/></svg>jonathan@employab.com</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10.5v1.5a1.5 1.5 0 01-1.5 1.5A10.5 10.5 0 012.5 4.5 1.5 1.5 0 014 3h1.5l1 2.5-1.5 1a8 8 0 004.5 4.5l1-1.5z"/></svg>+353 87 411 6666</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M2 8h12"/><ellipse cx="8" cy="8" rx="3" ry="6"/></svg>employab.com</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2C5.5 2 3.5 4 3.5 6.5C3.5 10.5 8 14 8 14s4.5-3.5 4.5-7.5C12.5 4 10.5 2 8 2z"/><circle cx="8" cy="6.5" r="1.5"/></svg>Dublin, Ireland</li></ul></div><div class="back-logo-area"><div class="back-logo-mark">Employ<span>Ab</span></div><div class="back-url">employab.com</div></div></div></div>
+      <div class="card-back"><div class="back-content"><div class="back-info"><div class="back-name">Jonathan McGuinness</div><div class="back-title">Founder &amp; CEO</div><ul class="back-details"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3.5" width="12" height="9" rx="1.5"/><path d="M2 5.5l6 4 6-4"/></svg>jonathan@employab.com</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10.5v1.5a1.5 1.5 0 01-1.5 1.5A10.5 10.5 0 012.5 4.5 1.5 1.5 0 014 3h1.5l1 2.5-1.5 1a8 8 0 004.5 4.5l1-1.5z"/></svg>+353 87 411 6666</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M2 8h12"/><ellipse cx="8" cy="8" rx="3" ry="6"/></svg>employab.com</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2C5.5 2 3.5 4 3.5 6.5C3.5 10.5 8 14 8 14s4.5-3.5 4.5-7.5C12.5 4 10.5 2 8 2z"/><circle cx="8" cy="6.5" r="1.5"/></svg>Dublin, Ireland</li></ul></div><div class="back-logo-area"><div class="back-logo-mark">Employ<span>Ab</span></div><div class="back-url">employab.com</div></div></div></div>
+      <div class="card-back"><div class="back-content"><div class="back-info"><div class="back-name">Jonathan McGuinness</div><div class="back-title">Founder &amp; CEO</div><ul class="back-details"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3.5" width="12" height="9" rx="1.5"/><path d="M2 5.5l6 4 6-4"/></svg>jonathan@employab.com</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10.5v1.5a1.5 1.5 0 01-1.5 1.5A10.5 10.5 0 012.5 4.5 1.5 1.5 0 014 3h1.5l1 2.5-1.5 1a8 8 0 004.5 4.5l1-1.5z"/></svg>+353 87 411 6666</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M2 8h12"/><ellipse cx="8" cy="8" rx="3" ry="6"/></svg>employab.com</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2C5.5 2 3.5 4 3.5 6.5C3.5 10.5 8 14 8 14s4.5-3.5 4.5-7.5C12.5 4 10.5 2 8 2z"/><circle cx="8" cy="6.5" r="1.5"/></svg>Dublin, Ireland</li></ul></div><div class="back-logo-area"><div class="back-logo-mark">Employ<span>Ab</span></div><div class="back-url">employab.com</div></div></div></div>
+      <div class="card-back"><div class="back-content"><div class="back-info"><div class="back-name">Jonathan McGuinness</div><div class="back-title">Founder &amp; CEO</div><ul class="back-details"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3.5" width="12" height="9" rx="1.5"/><path d="M2 5.5l6 4 6-4"/></svg>jonathan@employab.com</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10.5v1.5a1.5 1.5 0 01-1.5 1.5A10.5 10.5 0 012.5 4.5 1.5 1.5 0 014 3h1.5l1 2.5-1.5 1a8 8 0 004.5 4.5l1-1.5z"/></svg>+353 87 411 6666</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M2 8h12"/><ellipse cx="8" cy="8" rx="3" ry="6"/></svg>employab.com</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2C5.5 2 3.5 4 3.5 6.5C3.5 10.5 8 14 8 14s4.5-3.5 4.5-7.5C12.5 4 10.5 2 8 2z"/><circle cx="8" cy="6.5" r="1.5"/></svg>Dublin, Ireland</li></ul></div><div class="back-logo-area"><div class="back-logo-mark">Employ<span>Ab</span></div><div class="back-url">employab.com</div></div></div></div>
+      <div class="card-back"><div class="back-content"><div class="back-info"><div class="back-name">Jonathan McGuinness</div><div class="back-title">Founder &amp; CEO</div><ul class="back-details"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3.5" width="12" height="9" rx="1.5"/><path d="M2 5.5l6 4 6-4"/></svg>jonathan@employab.com</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10.5v1.5a1.5 1.5 0 01-1.5 1.5A10.5 10.5 0 012.5 4.5 1.5 1.5 0 014 3h1.5l1 2.5-1.5 1a8 8 0 004.5 4.5l1-1.5z"/></svg>+353 87 411 6666</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M2 8h12"/><ellipse cx="8" cy="8" rx="3" ry="6"/></svg>employab.com</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2C5.5 2 3.5 4 3.5 6.5C3.5 10.5 8 14 8 14s4.5-3.5 4.5-7.5C12.5 4 10.5 2 8 2z"/><circle cx="8" cy="6.5" r="1.5"/></svg>Dublin, Ireland</li></ul></div><div class="back-logo-area"><div class="back-logo-mark">Employ<span>Ab</span></div><div class="back-url">employab.com</div></div></div></div>
+    </div>
+  </div>
+
+  <script>
+    function toggleGuides() {
+      const sheets = document.querySelectorAll('.print-grid .card-front, .print-grid .card-back');
+      sheets.forEach(el => {
+        const current = el.style.outline;
+        el.style.outline = current ? '' : '0.5px dashed #d1d5db';
+      });
+    }
+  </script>
+</body>
+</html>
