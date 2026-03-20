@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0F2B4C"/>
+      <stop offset="100%" stop-color="#0a3a5c"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0A6E6E"/>
+      <stop offset="100%" stop-color="#0d9191"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle grid pattern -->
+  <g opacity="0.04" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="0" x2="1200" y2="630"/>
+    <line x1="200" y1="0" x2="1200" y2="500"/>
+    <line x1="400" y1="0" x2="1200" y2="400"/>
+    <line x1="0" y1="200" x2="800" y2="630"/>
+    <line x1="0" y1="400" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="1200" y2="300"/>
+    <line x1="800" y1="0" x2="1200" y2="200"/>
+  </g>
+
+  <!-- Accent bar at top -->
+  <rect width="1200" height="6" fill="url(#accent)"/>
+
+  <!-- Logo mark -->
+  <rect x="80" y="80" width="64" height="64" rx="12" fill="#ffffff" opacity="0.1"/>
+  <text x="88" y="126" font-family="system-ui,-apple-system,BlinkMacSystemFont,sans-serif" font-weight="800" font-size="44" fill="#ffffff">E</text>
+  <text x="114" y="126" font-family="system-ui,-apple-system,BlinkMacSystemFont,sans-serif" font-weight="800" font-size="44" fill="#0A6E6E">A</text>
+
+  <!-- Brand name -->
+  <text x="160" y="122" font-family="system-ui,-apple-system,BlinkMacSystemFont,sans-serif" font-weight="800" font-size="32" fill="#ffffff">Employ<tspan fill="#0A6E6E">Ab</tspan></text>
+
+  <!-- Main headline -->
+  <text x="80" y="280" font-family="system-ui,-apple-system,BlinkMacSystemFont,sans-serif" font-weight="800" font-size="72" fill="#ffffff">Your First Job,</text>
+  <text x="80" y="365" font-family="system-ui,-apple-system,BlinkMacSystemFont,sans-serif" font-weight="800" font-size="72" fill="#0A6E6E">Sorted!</text>
+
+  <!-- Subline -->
+  <text x="80" y="430" font-family="system-ui,-apple-system,BlinkMacSystemFont,sans-serif" font-weight="400" font-size="26" fill="#94a3b8">Verified credentials. AI matching. Real outcomes.</text>
+
+  <!-- Bottom badge strip -->
+  <g transform="translate(80, 510)">
+    <rect width="180" height="40" rx="20" fill="#0A6E6E" opacity="0.25"/>
+    <text x="90" y="26" font-family="system-ui,-apple-system,BlinkMacSystemFont,sans-serif" font-weight="600" font-size="15" fill="#0A6E6E" text-anchor="middle">EU Compliant</text>
+
+    <rect x="200" width="220" height="40" rx="20" fill="#0A6E6E" opacity="0.25"/>
+    <text x="310" y="26" font-family="system-ui,-apple-system,BlinkMacSystemFont,sans-serif" font-weight="600" font-size="15" fill="#0A6E6E" text-anchor="middle">University-Owned</text>
+
+    <rect x="440" width="220" height="40" rx="20" fill="#0A6E6E" opacity="0.25"/>
+    <text x="550" y="26" font-family="system-ui,-apple-system,BlinkMacSystemFont,sans-serif" font-weight="600" font-size="15" fill="#0A6E6E" text-anchor="middle">Open Badges 3.0</text>
+  </g>
+
+  <!-- URL -->
+  <text x="1120" y="590" font-family="system-ui,-apple-system,BlinkMacSystemFont,sans-serif" font-weight="500" font-size="20" fill="#64748b" text-anchor="end">employab.com</text>
+
+  <!-- Bottom accent bar -->
+  <rect y="624" width="1200" height="6" fill="url(#accent)"/>
+</svg>
