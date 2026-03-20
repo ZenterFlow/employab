@@ -47,7 +47,7 @@ nav {
 .logo .domain {
   font-size: 13px;
   font-weight: 400;
-  color: #9ca3af;
+  color: #6b7280;
   margin-left: 8px;
   letter-spacing: 0;
 }
@@ -701,7 +701,7 @@ nav {
 }
 
 .icp-visual .metric .after {
-  color: #059669;
+  color: #047857;
   font-weight: 700;
   font-size: 18px;
 }
@@ -861,7 +861,7 @@ nav {
   padding: 24px;
 }
 
-.mw-benefit h4 {
+.mw-benefit h3 {
   font-size: 16px;
   margin-bottom: 8px;
   color: #5eead4;
@@ -1039,7 +1039,7 @@ nav {
   margin-bottom: 12px;
 }
 
-.trust-item h4 {
+.trust-item h3 {
   font-size: 15px;
   color: #0F2B4C;
   margin-bottom: 6px;
@@ -1047,7 +1047,7 @@ nav {
 
 .trust-item p {
   font-size: 12px;
-  color: #9ca3af;
+  color: #6b7280;
 }
 
 /* Partners */
