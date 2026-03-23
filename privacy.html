@@ -34,6 +34,7 @@
     <div class="container">
       <nav>
         <a href="/" class="logo">Employ<span>Ab</span></a>
+        <div class="nav-toggle"><div class="lang-switcher"><a href="/privacy" class="active">EN</a><a href="/ga/privacy">GA</a></div><span aria-label="Menu">&#9776;</span></div>
         <div class="nav-links">
           <a href="/for-universities">For Universities</a>
           <a href="/for-employers">For Employers</a>
@@ -151,5 +152,6 @@
       </div>
     </div>
   </footer>
+  <script>document.querySelector('.nav-toggle').addEventListener('click',function(){document.querySelector('.nav-links').classList.toggle('open')});</script>
 </body>
 </html>

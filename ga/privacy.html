@@ -35,6 +35,7 @@
     <div class="container">
       <nav>
         <a href="/ga/" class="logo">Employ<span>Ab</span></a>
+        <div class="nav-toggle"><div class="lang-switcher"><a href="/privacy">EN</a><a href="/ga/privacy" class="active">GA</a></div><span aria-label="Roghchlár">&#9776;</span></div>
         <div class="nav-links">
           <a href="/ga/for-universities">Do Ollscoileanna</a>
           <a href="/ga/for-employers">D'Fhostóirí</a>
@@ -43,7 +44,6 @@
           <a href="/ga/blog">Blag</a>
           <a href="mailto:hello@employab.com" class="cta-nav">Déan Teagmháil</a>
         </div>
-        <div class="lang-switcher"><a href="/privacy">EN</a><a href="/ga/privacy" class="active">GA</a></div>
       </nav>
     </div>
   </header>
@@ -152,5 +152,6 @@
       </div>
     </div>
   </footer>
+  <script>document.querySelector('.nav-toggle').addEventListener('click',function(){document.querySelector('.nav-links').classList.toggle('open')});</script>
 </body>
 </html>
