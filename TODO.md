@@ -17,11 +17,11 @@
 ## SEO & Performance
 - [ ] **Blog content** - Only one post. Thin content hurts SEO. Add 2-3 more posts or demote blog in nav until there's more.
 - [ ] **Image optimisation** - No images on the site beyond favicons/OG. Adding hero images or illustrations would improve engagement and OG card appearance.
-- [ ] **Structured data for Irish pages** - Schema.org JSON-LD is English-only. Consider adding `inLanguage: "ga"` to GA page schemas.
+- [x] **Structured data for Irish pages** - Added `inLanguage: "ga"` to all 7 GA page JSON-LD blocks. Fixed mispointed URLs.
 
 ## Conversion & Trust
 - [ ] **Social proof** - Ireland blockquote cites "EmployAb Ireland pilot research" (self-referential). Add a named advisor, university logo, or attributed quote.
-- [ ] **Contact form or booking link** - All CTAs go to `mailto:`. No form, no Calendly. A booking link or embedded form would lower friction.
+- [x] **Contact form or booking link** - All CTA buttons now link to calendly.com/meet-employab (opens new tab). Footer emails kept as mailto.
 - [ ] **Modelled figures labelling** - Hero stats (89%, 6:1 ROI) are projections but not labelled as such on the homepage hero. A small "modelled" or "projected" tag builds trust.
 - [ ] **Testimonials section** - No real testimonials anywhere. Even early-stage quotes from pilot conversations would add credibility.
 - [ ] **Lead magnet** - No way to capture interest beyond email. A "Get our Ireland Graduate Report" PDF download or newsletter signup would build a list.
