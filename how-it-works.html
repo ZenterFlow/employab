@@ -2,13 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-MJNQLPJT');</script>
-  <!-- End Google Tag Manager -->
+  <script src="/consent.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>How EmployAb Works | Verified Credentials for Graduate Employment</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -23,6 +17,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://employab.com/how-it-works">
   <meta property="og:image" content="https://employab.com/og-image.png">
+  <meta property="og:locale" content="en_IE">
   <link rel="canonical" href="https://employab.com/how-it-works">
   <script type="application/ld+json">
   {
@@ -40,10 +35,6 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MJNQLPJT"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
   <header>
     <div class="container">
       <nav>
@@ -62,7 +53,8 @@
     </div>
   </header>
 
-  <main>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <main id="main-content">
 
   <!-- Hero -->
   <section class="hero">
@@ -241,6 +233,29 @@
       </div>
     </div>
   </footer>
-  <script>document.querySelector('.nav-toggle').addEventListener('click',function(){document.querySelector('.nav-links').classList.toggle('open')});</script>
+  <div id="cookie-consent" class="cookie-banner" style="display:none">
+    <p>We use cookies to analyse site traffic. No personal data is sold or shared. <a href="/privacy">Privacy policy</a></p>
+    <div class="cookie-buttons">
+      <button onclick="acceptCookies()" class="btn btn-primary btn-sm">Accept</button>
+      <button onclick="rejectCookies()" class="btn btn-secondary btn-sm">Reject</button>
+    </div>
+  </div>
+  <script>
+  (function(){
+    var t=document.querySelector('.nav-toggle'),n=document.querySelector('.nav-links');
+    if(!t||!n) return;
+    t.setAttribute('aria-expanded','false');
+    t.addEventListener('click',function(){
+      var open=n.classList.toggle('open');
+      t.setAttribute('aria-expanded',open);
+    });
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape'&&n.classList.contains('open')){
+        n.classList.remove('open');
+        t.setAttribute('aria-expanded','false');
+      }
+    });
+  })();
+  </script>
 </body>
 </html>

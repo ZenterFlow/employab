@@ -2,13 +2,7 @@
 <html lang="ga">
 <head>
   <meta charset="UTF-8">
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-MJNQLPJT');</script>
-  <!-- End Google Tag Manager -->
+  <script src="/consent.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Do Chéad Phost, Socraithe!</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -26,6 +20,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://employab.com/ga">
   <meta property="og:image" content="https://employab.com/og-image.png">
+  <meta property="og:locale" content="ga_IE">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
@@ -71,10 +66,6 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MJNQLPJT"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
   <!-- EU Banner -->
   <div class="eu-banner">
     <span>&#9733;</span> Tógtha d'ollscoileanna na hEorpa &mdash; GDPR ó dhúchas, comhlíontach leis an Acht AE um AI, ailínithe le ESCO <span>&#9733;</span>
@@ -98,7 +89,8 @@
     </div>
   </header>
 
-  <main>
+  <a href="#main-content" class="skip-link">Scipeáil chuig an bpríomhábhar</a>
+  <main id="main-content">
 
   <!-- Hero Section -->
   <section class="hero">
@@ -584,6 +576,29 @@
       </div>
     </div>
   </footer>
-  <script>document.querySelector('.nav-toggle').addEventListener('click',function(){document.querySelector('.nav-links').classList.toggle('open')});</script>
+  <div id="cookie-consent" class="cookie-banner" style="display:none">
+    <p>Úsáidimid fianáin chun trácht an láithreáin a anailísiú. Ní dhíoltar agus ní roinntear aon sonraí pearsanta. <a href="/ga/privacy">Polasaí príobháideachais</a></p>
+    <div class="cookie-buttons">
+      <button onclick="acceptCookies()" class="btn btn-primary btn-sm">Glac</button>
+      <button onclick="rejectCookies()" class="btn btn-secondary btn-sm">Diúltaigh</button>
+    </div>
+  </div>
+  <script>
+  (function(){
+    var t=document.querySelector('.nav-toggle'),n=document.querySelector('.nav-links');
+    if(!t||!n) return;
+    t.setAttribute('aria-expanded','false');
+    t.addEventListener('click',function(){
+      var open=n.classList.toggle('open');
+      t.setAttribute('aria-expanded',open);
+    });
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape'&&n.classList.contains('open')){
+        n.classList.remove('open');
+        t.setAttribute('aria-expanded','false');
+      }
+    });
+  })();
+  </script>
 </body>
 </html>

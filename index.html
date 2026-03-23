@@ -2,13 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-MJNQLPJT');</script>
-  <!-- End Google Tag Manager -->
+  <script src="/consent.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Your First Job, Sorted!</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -19,8 +13,6 @@
   <meta name="theme-color" content="#0F2B4C">
   <meta name="description" content="EmployAb turns your university's teaching into verified, portable credentials and connects graduates to employers across Europe. Open Badges 3.0, ESCO-aligned, EU AI Act compliant.">
   <meta name="keywords" content="graduate employability, verified credentials, university employment platform, Open Badges, ESCO, graduate outcomes, skills verification, EU AI Act, higher education, employer matching">
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <meta property="og:title" content="EmployAb — Verified Graduate Employability">
   <meta property="og:description" content="White-label employability platform for universities. OB3 credentials, AI matching, real-time analytics.">
   <meta property="og:type" content="website">
@@ -28,6 +20,7 @@
   <meta property="og:image" content="https://employab.com/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_IE">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Your First Job, Sorted!">
   <meta name="twitter:description" content="White-label employability platform for universities. OB3 credentials, AI matching, real-time analytics.">
@@ -71,10 +64,7 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MJNQLPJT"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
   <!-- EU Banner -->
   <div class="eu-banner">
     <span>&#9733;</span> Built for European universities &mdash; GDPR-native, EU AI Act compliant, ESCO-aligned <span>&#9733;</span>
@@ -99,7 +89,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
 
   <!-- Hero Section -->
   <section class="hero">
@@ -585,6 +575,29 @@
       </div>
     </div>
   </footer>
-  <script>document.querySelector('.nav-toggle').addEventListener('click',function(){document.querySelector('.nav-links').classList.toggle('open')});</script>
+  <div id="cookie-consent" class="cookie-banner" style="display:none">
+    <p>We use cookies to analyse site traffic. No personal data is sold or shared. <a href="/privacy">Privacy policy</a></p>
+    <div class="cookie-buttons">
+      <button onclick="acceptCookies()" class="btn btn-primary btn-sm">Accept</button>
+      <button onclick="rejectCookies()" class="btn btn-secondary btn-sm">Reject</button>
+    </div>
+  </div>
+  <script>
+  (function(){
+    var t=document.querySelector('.nav-toggle'),n=document.querySelector('.nav-links');
+    if(!t||!n) return;
+    t.setAttribute('aria-expanded','false');
+    t.addEventListener('click',function(){
+      var open=n.classList.toggle('open');
+      t.setAttribute('aria-expanded',open);
+    });
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape'&&n.classList.contains('open')){
+        n.classList.remove('open');
+        t.setAttribute('aria-expanded','false');
+      }
+    });
+  })();
+  </script>
 </body>
 </html>

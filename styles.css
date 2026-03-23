@@ -168,6 +168,26 @@ nav {
   }
 }
 
+/* Skip Link */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  background: #0A6E6E;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 0 0 6px 6px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  z-index: 200;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
 /* EU Banner */
 .eu-banner {
   background: #003399;
@@ -1692,5 +1712,466 @@ footer {
 
   .blog-card h2 {
     font-size: 20px;
+  }
+}
+
+/* Mobile landscape */
+@media (max-width: 576px) {
+  .hero {
+    padding: 60px 0 50px;
+  }
+
+  .hero h1 {
+    font-size: 26px;
+  }
+
+  .hero p {
+    font-size: 15px;
+    margin-bottom: 28px;
+  }
+
+  .hero-badge {
+    font-size: 12px;
+    padding: 5px 12px;
+  }
+
+  .hero-proof {
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .hero-buttons {
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+
+  .btn {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  .eu-banner {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+
+  h2,
+  .problem h2,
+  .solution h2,
+  .ireland-case h2,
+  .middleware h2,
+  .secondary-icps h2,
+  .eu-expansion h2,
+  .how-it-works h2 {
+    font-size: 26px;
+  }
+
+  .universities h2,
+  .final-cta h2 {
+    font-size: 28px;
+  }
+
+  .trust h2 {
+    font-size: 24px;
+  }
+
+  .problem > .container > p,
+  .solution > .container > p,
+  .ireland-case > .container > p,
+  .middleware > .container > p,
+  .eu-expansion > .container > p,
+  .universities > .container > p {
+    font-size: 15px;
+  }
+
+  .problem,
+  .solution,
+  .ireland-case,
+  .secondary-icps,
+  .eu-expansion,
+  .how-it-works {
+    padding: 60px 0;
+  }
+
+  .universities {
+    padding: 60px 0;
+  }
+
+  .middleware {
+    padding: 60px 0;
+  }
+
+  .problem-card {
+    padding: 24px;
+  }
+
+  .problem-card .stat {
+    font-size: 28px;
+  }
+
+  .solution-card {
+    padding: 24px;
+  }
+
+  .ireland-grid {
+    gap: 20px;
+  }
+
+  .ireland-context,
+  .ireland-impact {
+    padding: 24px;
+  }
+
+  .ireland-quote {
+    padding: 24px;
+  }
+
+  .ireland-quote blockquote {
+    font-size: 16px;
+  }
+
+  .icp-content h3 {
+    font-size: 22px;
+  }
+
+  .icp-visual {
+    padding: 24px;
+  }
+
+  .icp-visual .metric .after {
+    font-size: 15px;
+  }
+
+  .uni-card {
+    padding: 20px;
+  }
+
+  .uni-outcome {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .uni-outcome-card .num {
+    font-size: 28px;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .step {
+    padding: 20px 16px;
+  }
+
+  .trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .trust-item {
+    padding: 16px 10px;
+  }
+
+  .trust-item h3 {
+    font-size: 13px;
+  }
+
+  .trust-item p {
+    font-size: 11px;
+  }
+
+  .apprenticeship {
+    padding: 50px 0;
+  }
+
+  .apprenticeship h2 {
+    font-size: 24px;
+  }
+
+  .apprenticeship-stats {
+    gap: 10px;
+  }
+
+  .apprenticeship-stat {
+    padding: 14px;
+  }
+
+  .apprenticeship-stat .num {
+    font-size: 22px;
+  }
+
+  .final-cta {
+    padding: 60px 0;
+  }
+
+  .final-cta p {
+    font-size: 15px;
+  }
+
+  footer {
+    padding: 40px 0 30px;
+  }
+
+  .footer-grid {
+    gap: 24px;
+  }
+
+  .footer-bottom {
+    margin-top: 32px;
+  }
+
+  .legal-page {
+    padding: 50px 0;
+  }
+
+  .legal-page h1 {
+    font-size: 28px;
+  }
+
+  .legal-page h2 {
+    font-size: 20px;
+  }
+
+  .blog-hero {
+    padding: 50px 0 30px;
+  }
+
+  .blog-hero h1 {
+    font-size: 28px;
+  }
+
+  .blog-post-header h1 {
+    font-size: 26px;
+  }
+
+  .blog-post-body {
+    font-size: 15px;
+  }
+
+  .blog-post-body h2 {
+    font-size: 20px;
+  }
+
+  .blog-post-cta {
+    padding: 50px 0;
+  }
+
+  .blog-post-cta h2 {
+    font-size: 26px;
+  }
+}
+
+/* Cookie Consent Banner */
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #0F2B4C;
+  color: white;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 1000;
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.15);
+  flex-wrap: wrap;
+}
+
+.cookie-banner p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 600px;
+}
+
+.cookie-banner a {
+  color: #5eead4;
+  text-decoration: underline;
+}
+
+.cookie-buttons {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.btn-sm {
+  padding: 8px 18px;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.cookie-buttons .btn-primary {
+  box-shadow: none;
+}
+
+.cookie-buttons .btn-secondary {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.cookie-buttons .btn-secondary:hover {
+  border-color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 576px) {
+  .cookie-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
+  .cookie-banner p {
+    font-size: 13px;
+  }
+}
+
+/* Small mobile portrait */
+@media (max-width: 375px) {
+  .container {
+    padding: 0 14px;
+  }
+
+  .hero h1 {
+    font-size: 22px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  h2,
+  .problem h2,
+  .solution h2,
+  .ireland-case h2,
+  .middleware h2,
+  .secondary-icps h2,
+  .eu-expansion h2,
+  .how-it-works h2 {
+    font-size: 22px;
+  }
+
+  .universities h2,
+  .final-cta h2 {
+    font-size: 24px;
+  }
+
+  .trust h2 {
+    font-size: 20px;
+  }
+
+  .hero-proof {
+    font-size: 12px;
+  }
+
+  .hero-proof strong {
+    font-size: 14px;
+  }
+
+  .btn {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .nav-toggle {
+    font-size: 18px;
+    padding: 6px 8px;
+  }
+
+  .lang-switcher a {
+    font-size: 11px;
+    padding: 4px 7px;
+  }
+
+  .problem-card .stat {
+    font-size: 24px;
+  }
+
+  .problem-card h3 {
+    font-size: 16px;
+  }
+
+  .problem-card p {
+    font-size: 13px;
+  }
+
+  .uni-outcome-card .num {
+    font-size: 24px;
+  }
+
+  .uni-outcome-card .label {
+    font-size: 12px;
+  }
+
+  .icp-content h3 {
+    font-size: 20px;
+  }
+
+  .icp-visual .metric {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .trust-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .trust-item {
+    padding: 12px 8px;
+  }
+
+  .trust-item .icon {
+    font-size: 22px;
+  }
+
+  .trust-item h3 {
+    font-size: 12px;
+  }
+
+  .apprenticeship-stat .num {
+    font-size: 20px;
+  }
+
+  .apprenticeship-stat .label {
+    font-size: 11px;
+  }
+
+  .footer-col a {
+    font-size: 13px;
+  }
+
+  .legal-page h1 {
+    font-size: 24px;
+  }
+
+  .blog-hero h1 {
+    font-size: 24px;
+  }
+
+  .blog-post-header h1 {
+    font-size: 22px;
+  }
+
+  .blog-card-content {
+    padding: 20px;
+  }
+
+  .blog-card h2 {
+    font-size: 18px;
+  }
+
+  .blog-card p {
+    font-size: 14px;
   }
 }
