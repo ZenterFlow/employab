@@ -1,56 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://employab.com/</loc>
-    <lastmod>2026-03-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://employab.com/"/>
+    <xhtml:link rel="alternate" hreflang="ga" href="https://employab.com/ga"/>
+    <lastmod>2026-03-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://employab.com/ga</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://employab.com/"/>
+    <xhtml:link rel="alternate" hreflang="ga" href="https://employab.com/ga"/>
+    <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://employab.com/for-universities</loc>
-    <lastmod>2026-03-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://employab.com/for-universities"/>
+    <xhtml:link rel="alternate" hreflang="ga" href="https://employab.com/ga/for-universities"/>
+    <lastmod>2026-03-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://employab.com/ga/for-universities</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://employab.com/for-universities"/>
+    <xhtml:link rel="alternate" hreflang="ga" href="https://employab.com/ga/for-universities"/>
+    <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://employab.com/for-employers</loc>
-    <lastmod>2026-03-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://employab.com/for-employers"/>
+    <xhtml:link rel="alternate" hreflang="ga" href="https://employab.com/ga/for-employers"/>
+    <lastmod>2026-03-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://employab.com/ga/for-employers</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://employab.com/for-employers"/>
+    <xhtml:link rel="alternate" hreflang="ga" href="https://employab.com/ga/for-employers"/>
+    <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://employab.com/how-it-works</loc>
-    <lastmod>2026-03-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://employab.com/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="ga" href="https://employab.com/ga/how-it-works"/>
+    <lastmod>2026-03-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://employab.com/ga/how-it-works</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://employab.com/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="ga" href="https://employab.com/ga/how-it-works"/>
+    <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://employab.com/graduate-employability-ireland</loc>
-    <lastmod>2026-03-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://employab.com/graduate-employability-ireland"/>
+    <xhtml:link rel="alternate" hreflang="ga" href="https://employab.com/ga/graduate-employability-ireland"/>
+    <lastmod>2026-03-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://employab.com/ga/graduate-employability-ireland</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://employab.com/graduate-employability-ireland"/>
+    <xhtml:link rel="alternate" hreflang="ga" href="https://employab.com/ga/graduate-employability-ireland"/>
+    <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://employab.com/privacy</loc>
-    <lastmod>2026-03-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://employab.com/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ga" href="https://employab.com/ga/privacy"/>
+    <lastmod>2026-03-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://employab.com/ga/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://employab.com/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ga" href="https://employab.com/ga/privacy"/>
+    <lastmod>2026-03-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://employab.com/terms</loc>
-    <lastmod>2026-03-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://employab.com/terms"/>
+    <xhtml:link rel="alternate" hreflang="ga" href="https://employab.com/ga/terms"/>
+    <lastmod>2026-03-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://employab.com/ga/terms</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://employab.com/terms"/>
+    <xhtml:link rel="alternate" hreflang="ga" href="https://employab.com/ga/terms"/>
+    <lastmod>2026-03-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://employab.com/blog</loc>
-    <lastmod>2026-03-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://employab.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="ga" href="https://employab.com/ga/blog"/>
+    <lastmod>2026-03-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://employab.com/ga/blog</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://employab.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="ga" href="https://employab.com/ga/blog"/>
+    <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://employab.com/blog/the-missing-connection-layer</loc>
-    <lastmod>2026-03-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://employab.com/blog/the-missing-connection-layer"/>
+    <xhtml:link rel="alternate" hreflang="ga" href="https://employab.com/ga/blog/the-missing-connection-layer"/>
+    <lastmod>2026-03-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://employab.com/ga/blog/the-missing-connection-layer</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://employab.com/blog/the-missing-connection-layer"/>
+    <xhtml:link rel="alternate" hreflang="ga" href="https://employab.com/ga/blog/the-missing-connection-layer"/>
+    <lastmod>2026-03-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

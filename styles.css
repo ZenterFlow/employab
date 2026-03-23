@@ -85,6 +85,37 @@ nav {
   background: #075454;
 }
 
+/* Language Switcher */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: 8px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.lang-switcher a {
+  text-decoration: none;
+  color: #4B5563;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 6px 10px;
+  transition: all 0.2s;
+  line-height: 1;
+}
+
+.lang-switcher a:hover {
+  background: #f3f4f6;
+  color: #0F2B4C;
+}
+
+.lang-switcher a.active {
+  background: #0F2B4C;
+  color: white;
+}
+
 /* EU Banner */
 .eu-banner {
   background: #003399;
