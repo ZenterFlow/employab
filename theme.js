@@ -6,17 +6,21 @@
   }
   document.addEventListener('DOMContentLoaded',function(){
     var btns=document.querySelectorAll('.theme-toggle');
+    function update(){
+      var isDark=root.classList.contains('dark');
+      btns.forEach(function(b){
+        b.textContent=isDark?'\u2600':'\u263E';
+        b.setAttribute('aria-label',isDark?'Switch to light mode':'Switch to dark mode');
+      });
+    }
+    update();
     btns.forEach(function(btn){
-      btn.textContent=root.classList.contains('dark')?'\u2600':'\u263E';
-      btn.setAttribute('aria-label',root.classList.contains('dark')?'Switch to light mode':'Switch to dark mode');
-      btn.addEventListener('click',function(){
+      btn.addEventListener('click',function(e){
+        e.stopPropagation();
         root.classList.toggle('dark');
         var isDark=root.classList.contains('dark');
         localStorage.setItem('theme',isDark?'dark':'light');
-        btns.forEach(function(b){
-          b.textContent=isDark?'\u2600':'\u263E';
-          b.setAttribute('aria-label',isDark?'Switch to light mode':'Switch to dark mode');
-        });
+        update();
       });
     });
   });
