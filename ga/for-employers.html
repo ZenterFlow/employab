@@ -34,6 +34,7 @@
   }
   </script>
   <link rel="stylesheet" href="/styles.css">
+  <script src="/animations.js" defer></script>
 </head>
 <body>
   <header>
@@ -71,7 +72,7 @@
   </section>
 
   <!-- Employer benefits -->
-  <section class="secondary-icps">
+  <section class="secondary-icps fade-in">
     <div class="container">
       <h2>Cad a Athraíonn d'Fhostóirí</h2>
 
@@ -110,7 +111,7 @@
   </section>
 
   <!-- For Students -->
-  <section style="background:#f9fafb;" class="secondary-icps">
+  <section style="background:#f9fafb;" class="secondary-icps fade-in">
     <div class="container">
       <h2>Agus do na Céimithe atá á bhFostú Agat</h2>
 
@@ -149,7 +150,7 @@
   </section>
 
   <!-- CTA -->
-  <section class="final-cta">
+  <section class="final-cta fade-in">
     <div class="container">
       <h2>Réidh chun céimithe a fhostú<br>ar féidir leat muinín a bheith agat astu?</h2>
       <p>Táimid ag tógáil EmployAb faoi láthair. Má tá tú i d'fhostóir a dteastaíonn tallann chéimithe níos fearr uait &mdash; fíoraithe, meaitseáilte, agus réidh &mdash; labhair linn.</p>
@@ -157,6 +158,18 @@
         <a href="https://calendly.com/meet-employab/employers" target="_blank" rel="noopener" class="btn btn-primary">Déan Teagmháil le Foireann na bhFostóirí &rarr;</a>
         <a href="/ga/for-universities" class="btn btn-secondary">Conas a Oibríonn Sé d'Ollscoileanna</a>
       </div>
+    </div>
+  </section>
+
+  <section class="newsletter fade-in">
+    <div class="container">
+      <h2>Fan ar an eolas</h2>
+      <p>Eolas faoi infhostaitheacht ceimithe, nuashonruithe ardain, agus nuacht sheolta Eireann. Gan turscair.</p>
+      <form class="newsletter-form" action="https://embfrm.beehiiv.com/subscribe" method="post" target="_blank">
+        <input type="email" name="email" placeholder="Do sheoladh riomhphoist" required>
+        <button type="submit">Liostail</button>
+      </form>
+      <p class="newsletter-note">Diliostail am ar bith. Tugaimid meas ar do bhosca isteach.</p>
     </div>
   </section>
 

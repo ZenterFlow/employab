@@ -34,6 +34,7 @@
   }
   </script>
   <link rel="stylesheet" href="/styles.css">
+  <script src="/animations.js" defer></script>
 </head>
 <body>
   <header>
@@ -76,7 +77,7 @@
   </section>
 
   <!-- Three pillars -->
-  <section id="universities" class="universities">
+  <section id="universities" class="universities fade-in">
     <div class="container">
       <div class="section-label">Cén Fáth a Roghnaíonn Ollscoileanna EmployAb</div>
       <h2>Tógtha Timpeall ar a bhFuil ag Teastáil Uait i nDáiríre</h2>
@@ -132,7 +133,7 @@
   </section>
 
   <!-- Integration -->
-  <section class="middleware">
+  <section class="middleware fade-in">
     <div class="container">
       <h2>Oibríonn Sé leis na Córais atá Agat Cheana</h2>
       <p>Ní chuirfidh EmployAb do chórais in ionad a chéile &mdash; nascann sé iad. Fanann do chláraitheoireacht, do LMS, do sheirbhís ghairmeacha, agus do chomhpháirtíochtaí fostóirí go léir mar atá.</p>
@@ -154,7 +155,7 @@
   </section>
 
   <!-- How It Works summary -->
-  <section class="how-it-works">
+  <section class="how-it-works fade-in">
     <div class="container">
       <h2>Conas a Oibríonn Sé</h2>
       <div class="steps">
@@ -186,7 +187,7 @@
   </section>
 
   <!-- Trust -->
-  <section class="trust">
+  <section class="trust fade-in">
     <div class="container">
       <h2>Tógtha ar Chaighdeáin a Thaitneoidh le d'Fhoireann Comhlíonta</h2>
       <p>Oscailte, iniúchta, ailínithe leis an AE. Ní bosca dubh dílseánaigh é.</p>
@@ -221,7 +222,7 @@
   </section>
 
   <!-- CTA -->
-  <section class="final-cta">
+  <section class="final-cta fade-in">
     <div class="container">
       <h2>Réidh le do thorthaí<br>céimithe a chruthú?</h2>
       <p>Táimid ag lorg comhpháirtithe ollscoile ar mhaith leo EmployAb a mhúnlú. Má tá torthaí céimithe tábhachtach duit, labhraímis.</p>
@@ -229,6 +230,18 @@
         <a href="https://calendly.com/meet-employab/demo" target="_blank" rel="noopener" class="btn btn-primary">Cuir Taispeántas in Áirithe &rarr;</a>
         <a href="/ga/graduate-employability-ireland" class="btn btn-secondary">Féach ar Chás-Staidéar na hÉireann</a>
       </div>
+    </div>
+  </section>
+
+  <section class="newsletter fade-in">
+    <div class="container">
+      <h2>Fan ar an eolas</h2>
+      <p>Eolas faoi infhostaitheacht ceimithe, nuashonruithe ardain, agus nuacht sheolta Eireann. Gan turscair.</p>
+      <form class="newsletter-form" action="https://embfrm.beehiiv.com/subscribe" method="post" target="_blank">
+        <input type="email" name="email" placeholder="Do sheoladh riomhphoist" required>
+        <button type="submit">Liostail</button>
+      </form>
+      <p class="newsletter-note">Diliostail am ar bith. Tugaimid meas ar do bhosca isteach.</p>
     </div>
   </section>
 

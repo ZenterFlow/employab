@@ -24,7 +24,7 @@
 - [x] **Contact form or booking link** - All CTA buttons now link to calendly.com/meet-employab (opens new tab). Footer emails kept as mailto.
 - [ ] **Modelled figures labelling** - Hero stats (89%, 6:1 ROI) are projections but not labelled as such on the homepage hero. A small "modelled" or "projected" tag builds trust.
 - [ ] **Testimonials section** - No real testimonials anywhere. Even early-stage quotes from pilot conversations would add credibility.
-- [ ] **Lead magnet** - No way to capture interest beyond email. A "Get our Ireland Graduate Report" PDF download or newsletter signup would build a list.
+- [x] **Lead magnet** - Newsletter signup section on 10 main pages (EN + GA). Beehiiv form action placeholder ready to update.
 
 ## Technical
 - [x] **Cache headers** - Added cache-control headers in vercel.json: immutable for CSS/JS/images, must-revalidate for HTML.
@@ -37,7 +37,7 @@
 
 ## Nice to Have
 - [ ] **FostAb branding** - Consider using "FostAb" as the Irish brand name on `/ga/` pages (see memory: gaelic brand wordplay).
-- [ ] **Dark mode** - `prefers-color-scheme` support. The navy/teal palette adapts well to dark.
-- [ ] **Page transitions** - Smooth scroll and subtle fade-in animations on section entry.
+- [x] **Dark mode** - Full prefers-color-scheme support. All sections, cards, text, forms styled for dark backgrounds.
+- [x] **Page transitions** - Scroll fade-in animations on all sections. Smooth scroll. Respects prefers-reduced-motion.
 - [ ] **RSS feed** - For the blog, once there's more content.
 - [ ] **Open Graph images per page** - All pages share one OG image. Unique images per page improve social sharing.

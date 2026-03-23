@@ -65,6 +65,7 @@
   }
   </script>
   <link rel="stylesheet" href="/styles.css">
+  <script src="/animations.js" defer></script>
 </head>
 <body>
   <!-- EU Banner -->
@@ -123,7 +124,7 @@
   </div>
 
   <!-- Problem Section -->
-  <section id="problem" class="problem">
+  <section id="problem" class="problem fade-in">
     <div class="container">
       <h2>Is Fadhb Eorpach í Infhostaitheacht na gCéimithe</h2>
       <p>Tá brú ar ollscoileanna a chruthú go dtéann céimeanna chuig fostaíocht. Tá na figiúirí ag éirí níos deacra a shéanadh.</p>
@@ -148,7 +149,7 @@
   </section>
 
   <!-- Ireland Case Study -->
-  <section id="ireland" class="ireland-case">
+  <section id="ireland" class="ireland-case fade-in">
     <div class="container">
       <h2>&#127470;&#127466; Á Sheoladh in Éirinn</h2>
       <p>89,000 céimí sa bhliain. 34 ollscoil. Rialtas ag éileamh cruthúnas ar thorthaí. Is in Éirinn atá an múnla á thógáil againn &mdash; sula scáileoimid ar fud na hEorpa.</p>
@@ -179,7 +180,7 @@
   </section>
 
   <!-- Solution Section — Benefits-led -->
-  <section class="solution">
+  <section class="solution fade-in">
     <div class="container">
       <h2>Cad atá á Thógáil Againn</h2>
       <p>Insíonn ollscoileanna dúinn go dteastaíonn trí rud uathu: cruthúnas go n-earcaítear céimithe, sonraí a shásaíonn an rialtas, agus ardán atá faoina smacht féin. Sin é atá ceaptha ag EmployAb a sholáthar.</p>
@@ -209,7 +210,7 @@
   </section>
 
   <!-- Why It Works -->
-  <section class="middleware">
+  <section class="middleware fade-in">
     <div class="container">
       <h2>Deartha le hOibriú le Cad atá Agat Cheana</h2>
       <p>Ní chuirfidh EmployAb do chórais in ionad &mdash; nascfaidh sé iad. Fanann do chláraitheoir, LMS, seirbhís gairmeacha, agus comhpháirtíochtaí fostóirí ar fad san áit ina bhfuil siad. Cuirfimid ag obair le chéile iad.</p>
@@ -231,7 +232,7 @@
   </section>
 
   <!-- Apprenticeship Extension -->
-  <section class="apprenticeship">
+  <section class="apprenticeship fade-in">
     <div class="container">
       <div class="apprenticeship-inner">
         <div>
@@ -267,7 +268,7 @@
   </section>
 
   <!-- Primary ICP: Universities -->
-  <section id="universities" class="universities">
+  <section id="universities" class="universities fade-in">
     <div class="container">
       <div class="section-label">Príomh-Chomhpháirtí</div>
       <h2>Á Thógáil d'Ollscoileanna ar Dtús</h2>
@@ -323,7 +324,7 @@
   </section>
 
   <!-- Secondary ICPs -->
-  <section id="employers" class="secondary-icps">
+  <section id="employers" class="secondary-icps fade-in">
     <div class="container">
       <h2>Tógtha do Gach Duine san Éiceachóras</h2>
 
@@ -429,7 +430,7 @@
   </section>
 
   <!-- EU Expansion -->
-  <section class="eu-expansion">
+  <section class="eu-expansion fade-in">
     <div class="container">
       <h2>Éire ar Dtús, an Eoraip Ina Dhiaidh</h2>
       <p>Deartha le haghaidh scála ar fud an AE ón gcéad lá. Tá príobháideachas, comhlíonadh, agus tacaíocht ilteangach ionsuite &mdash; ní curtha leis mar iarsmaoineamh.</p>
@@ -457,7 +458,7 @@
   </section>
 
   <!-- How It Works -->
-  <section id="how-it-works" class="how-it-works">
+  <section id="how-it-works" class="how-it-works fade-in">
     <div class="container">
       <h2>Conas a Oibríonn Sé</h2>
       <div class="steps">
@@ -486,7 +487,7 @@
   </section>
 
   <!-- Trust & Standards -->
-  <section class="trust">
+  <section class="trust fade-in">
     <div class="container">
       <h2>Tógtha ar Chaighdeáin a Thaitneoidh le d'Fhoireann Comhlíonta</h2>
       <p>Oscailte, ininiúchta, ailínithe leis an AE. Ní bosca dubh dílseánaigh &mdash; siúlfaimid thú tríd gach sraith i do thaispeántas.</p>
@@ -522,7 +523,7 @@
 
 
   <!-- Final CTA -->
-  <section class="final-cta">
+  <section class="final-cta fade-in">
     <div class="container">
       <h2>Suim agat san áit<br>a bhfuil sé seo ag dul?</h2>
       <p>Táimid ag tógáil EmployAb anois agus ag lorg comhpháirtithe ollscoile ar mhaith leo a mhúnlú cad a thiocfaidh as. Má tá torthaí céimithe tábhachtach duit, labhraímis.</p>
@@ -534,6 +535,18 @@
   </section>
 
   </main>
+
+  <section class="newsletter fade-in">
+    <div class="container">
+      <h2>Fan ar an eolas</h2>
+      <p>Eolas faoi infhostaitheacht ceimithe, nuashonruithe ardain, agus nuacht sheolta Eireann. Gan turscair.</p>
+      <form class="newsletter-form" action="https://embfrm.beehiiv.com/subscribe" method="post" target="_blank">
+        <input type="email" name="email" placeholder="Do sheoladh riomhphoist" required>
+        <button type="submit">Liostail</button>
+      </form>
+      <p class="newsletter-note">Diliostail am ar bith. Tugaimid meas ar do bhosca isteach.</p>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer>
