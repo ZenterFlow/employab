@@ -377,7 +377,7 @@ nav {
 .problem-card .stat {
   font-size: 36px;
   font-weight: 800;
-  color: #dc2626;
+  color: #c81e1e;
   margin-bottom: 8px;
 }
 
@@ -1323,7 +1323,7 @@ footer {
 }
 
 .legal-page .last-updated {
-  color: #9ca3af;
+  color: #6b7280;
   font-size: 14px;
   margin-bottom: 48px;
 }
@@ -1421,7 +1421,7 @@ footer {
 
 .blog-card-date {
   font-size: 14px;
-  color: #9ca3af;
+  color: #6b7280;
 }
 
 .blog-card-tag {
@@ -1486,7 +1486,7 @@ footer {
   gap: 16px;
   margin-bottom: 16px;
   font-size: 14px;
-  color: #9ca3af;
+  color: #6b7280;
 }
 
 .blog-post-author {
