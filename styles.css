@@ -339,7 +339,7 @@ nav {
 }
 
 html.dark .hero-proof-note {
-  color: #6b7280;
+  color: #8b949e;
 }
 
 /* Case Study Banner */
@@ -2812,7 +2812,11 @@ html.dark .newsletter-form input[type="email"]:focus {
 }
 
 html.dark .newsletter-form input[type="email"]::placeholder {
-  color: #6b7280;
+  color: #8b949e;
+}
+
+html.dark .problem-card .stat {
+  color: #f87171;
 }
 
 /* Cookie banner */
