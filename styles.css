@@ -324,6 +324,18 @@ nav {
   color: #0F2B4C;
 }
 
+.hero-proof-note {
+  text-align: center;
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: -36px;
+  font-style: italic;
+}
+
+html.dark .hero-proof-note {
+  color: #6b7280;
+}
+
 /* Case Study Banner */
 .case-study-banner {
   background: #f0fdf4;

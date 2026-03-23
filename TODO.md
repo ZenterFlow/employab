@@ -22,7 +22,7 @@
 ## Conversion & Trust
 - [ ] **Social proof** - Ireland blockquote cites "EmployAb Ireland pilot research" (self-referential). Add a named advisor, university logo, or attributed quote.
 - [x] **Contact form or booking link** - All CTA buttons now link to calendly.com/meet-employab (opens new tab). Footer emails kept as mailto.
-- [ ] **Modelled figures labelling** - Hero stats (89%, 6:1 ROI) are projections but not labelled as such on the homepage hero. A small "modelled" or "projected" tag builds trust.
+- [x] **Modelled figures labelling** - Added "Based on projected outcomes from pilot research and modelling" note under hero stats on all 4 pages (EN + GA).
 - [ ] **Testimonials section** - No real testimonials anywhere. Even early-stage quotes from pilot conversations would add credibility.
 - [x] **Lead magnet** - Newsletter signup section on 10 main pages (EN + GA). Beehiiv form action placeholder ready to update.
 
