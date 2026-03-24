@@ -130,6 +130,70 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://employab.com/blog/careers-services-goldmine</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://employab.com/blog/careers-services-goldmine"/>
+    <xhtml:link rel="alternate" hreflang="ga" href="https://employab.com/ga/blog/careers-services-goldmine"/>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://employab.com/ga/blog/careers-services-goldmine</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://employab.com/blog/careers-services-goldmine"/>
+    <xhtml:link rel="alternate" hreflang="ga" href="https://employab.com/ga/blog/careers-services-goldmine"/>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://employab.com/blog/stop-screening-start-searching</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://employab.com/blog/stop-screening-start-searching"/>
+    <xhtml:link rel="alternate" hreflang="ga" href="https://employab.com/ga/blog/stop-screening-start-searching"/>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://employab.com/ga/blog/stop-screening-start-searching</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://employab.com/blog/stop-screening-start-searching"/>
+    <xhtml:link rel="alternate" hreflang="ga" href="https://employab.com/ga/blog/stop-screening-start-searching"/>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://employab.com/blog/your-degree-is-worth-more</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://employab.com/blog/your-degree-is-worth-more"/>
+    <xhtml:link rel="alternate" hreflang="ga" href="https://employab.com/ga/blog/your-degree-is-worth-more"/>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://employab.com/ga/blog/your-degree-is-worth-more</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://employab.com/blog/your-degree-is-worth-more"/>
+    <xhtml:link rel="alternate" hreflang="ga" href="https://employab.com/ga/blog/your-degree-is-worth-more"/>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://employab.com/blog/graduate-employability-needs-real-time-data</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://employab.com/blog/graduate-employability-needs-real-time-data"/>
+    <xhtml:link rel="alternate" hreflang="ga" href="https://employab.com/ga/blog/graduate-employability-needs-real-time-data"/>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://employab.com/ga/blog/graduate-employability-needs-real-time-data</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://employab.com/blog/graduate-employability-needs-real-time-data"/>
+    <xhtml:link rel="alternate" hreflang="ga" href="https://employab.com/ga/blog/graduate-employability-needs-real-time-data"/>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://employab.com/blog/the-missing-connection-layer</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://employab.com/blog/the-missing-connection-layer"/>
     <xhtml:link rel="alternate" hreflang="ga" href="https://employab.com/ga/blog/the-missing-connection-layer"/>
