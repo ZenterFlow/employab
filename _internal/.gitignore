@@ -1,0 +1,8 @@
+# Everything in this folder is internal-only and is never committed.
+# Drop strategy docs, proposals, planning notes, draft content, working
+# diagrams etc. in here and they will stay local automatically.
+#
+# Only this .gitignore is tracked — it carries the convention forward.
+
+*
+!.gitignore

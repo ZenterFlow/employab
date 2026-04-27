@@ -48,3 +48,21 @@ Each page has JSON-LD structured data (Organization, WebSite, BreadcrumbList). I
 - **Google Tag Manager**: GTM-MJNQLPJT, consent-gated via consent.js
 - **Calendly**: All CTA buttons link to calendly.com/meet-employab
 - **Beehiiv**: Newsletter signup forms (form action placeholder)
+
+## Internal-only files — `_internal/`
+
+The `_internal/` folder is a working area for strategy docs, proposals, planning notes, draft content, and working diagrams. Everything inside it is gitignored via `_internal/.gitignore` (only the `.gitignore` itself is tracked).
+
+**Convention:** Drop anything that should not ship to the website or be visible to PR reviewers in `_internal/`. It will stay local automatically.
+
+**Examples of what goes in `_internal/`:**
+- Strategy proposals (e.g. `proposal-*.md`)
+- Regulatory landscape diagrams and mindmaps
+- Draft blog posts before they're ready for the public site
+- Planning notes from sessions with Claude
+- Anything date-stamped that's not a public artefact
+
+**What does NOT go in `_internal/`:**
+- Anything that is part of the website (HTML, CSS, JS, public images)
+- Tracked configuration (vercel.json, robots.txt, sitemap.xml)
+- Public documentation that should ship with the repo (README.md, etc.)

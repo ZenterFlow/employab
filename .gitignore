@@ -3,3 +3,10 @@
 node_modules
 *.lighthouse.json
 www.employab.com-*.json
+
+# Local Claude Code config (per-project, per-machine)
+.claude/
+
+# Internal-only working folder — see _internal/.gitignore
+# Everything inside _internal/ stays local. Drop strategy docs, proposals,
+# planning notes, and draft content here to keep them out of commits.
